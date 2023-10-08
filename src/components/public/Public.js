@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PublicBanner from './PublicBanner';
 import PublicBody from './PublicBody';
-import StickyHeader from './PublicHeader';
 
 const Public = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -28,9 +27,6 @@ const Public = () => {
 
   return (
     <div>
-      {/* Sticky Header */}
-      <StickyHeader/>
-
       {/* Top Section */}
       <PublicBanner topSectionHeight={topSectionHeight} /> {/* Pass topSectionHeight as a prop */}
 
