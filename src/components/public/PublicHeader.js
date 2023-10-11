@@ -9,8 +9,13 @@ const PublicHeader = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const shouldDisplayAboutMenu = location.pathname === '/' || location.pathname === '/login';
-  const shouldDisplayLoginMenu = location.pathname === '/' || location.pathname === '/about';
+  const menuItems = [
+    { label: 'About Us', path: '/', shouldDisplay: location.pathname === '/' || location.pathname === '/login' },
+    { label: 'Login', path: 'login', shouldDisplay: location.pathname === '/' || location.pathname === '/about' },
+    { label: 'Home', path: '/dashboard/home', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/home'},
+    { label: 'Tracker', path: '/dashboard/tracker', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/tracker' },
+    { label: 'Summary', path: '/dashboard/summary', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/summary' },
+  ]
 
   return (
     <header className="fixed top-0 left-0 w-full bg-orange-500 shadow-md z-10 h-24">
@@ -24,18 +29,16 @@ const PublicHeader = () => {
           </a>
         </div>
         <div className="hidden px-4 lg:flex space-x-4">
-          {shouldDisplayAboutMenu && (
-            <a 
-            href="#about"
-            className="text-white hover:text-orange-600 focus:text-orange-500"
-            >About Us</a>
-          )}
-          {shouldDisplayLoginMenu && (
+          {menuItems.map((menuItem) =>
+            menuItem.shouldDisplay && (
             <a
-            href="login"
-            className="text-white hover:text-orange-600 focus:text-orange-500"
-            >Login</a>
-          )}
+              key={menuItem.label}
+              href={menuItem.path}
+              className="text-white hover:text-orange-600 focus:text-orange-500"
+              >
+              {menuItem.label}
+            </a>
+          ))}
         </div>
         <div className="lg:hidden flex items-center">
           {isMenuOpen ? (
@@ -57,8 +60,16 @@ const PublicHeader = () => {
       </div>
       {isMenuOpen && (
         <div className="lg:hidden bg-white p-4">
-          {shouldDisplayAboutMenu && (<a href="#about" className="block text-black hover:text-orange-600 focus:text-orange-500 py-2">About Us</a>)}
-          {shouldDisplayLoginMenu && (<a href="login" className="block text-black hover:text-orange-600 focus:text-orange-500 py-2">Login</a>)}
+          {menuItems.map((menuItem) => 
+            menuItem.shouldDisplay && (
+            <a
+              key={menuItem.label}
+              href={menuItem.path}
+              className="text-white hover:text-orange-600 focus:text-orange-500"
+              >
+              {menuItem.label}
+            </a>
+          ))}
         </div>
       )}
     </header>
