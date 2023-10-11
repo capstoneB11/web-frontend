@@ -12,9 +12,9 @@ const PublicHeader = () => {
   const menuItems = [
     { label: 'About Us', path: '/', shouldDisplay: location.pathname === '/' || location.pathname === '/login' },
     { label: 'Login', path: 'login', shouldDisplay: location.pathname === '/' || location.pathname === '/about' },
-    { label: 'Home', path: '/dashboard/home', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/home'},
-    { label: 'Tracker', path: '/dashboard/tracker', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/tracker' },
-    { label: 'Summary', path: '/dashboard/summary', shouldDisplay: location.pathname.startsWith('/dashboard') && !location.pathname === 'dashboard/summary' },
+    { label: 'Home', path: '/dashboard/home', shouldDisplay: location.pathname.startsWith('/dashboard')},
+    { label: 'Tracker', path: '/dashboard/tracker', shouldDisplay: location.pathname.startsWith('/dashboard')},
+    { label: 'Summary', path: '/dashboard/summary', shouldDisplay: location.pathname.startsWith('/dashboard')},
   ]
 
   return (
@@ -59,13 +59,13 @@ const PublicHeader = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="lg:hidden bg-white p-4">
+        <div className="lg:hidden bg-white p-4 space-y-4 flex flex-col">
           {menuItems.map((menuItem) => 
             menuItem.shouldDisplay && (
             <a
               key={menuItem.label}
               href={menuItem.path}
-              className="text-white hover:text-orange-600 focus:text-orange-500"
+              className="text-black hover:text-orange-600 focus:text-orange-500"
               >
               {menuItem.label}
             </a>
