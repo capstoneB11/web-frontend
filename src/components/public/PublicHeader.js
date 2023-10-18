@@ -18,7 +18,7 @@ const PublicHeader = () => {
   ]
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-orange-500 shadow-md z-10 h-24">
+    <header className="sticky top-0 left-0 w-full bg-orange-500 shadow-md z-10 h-24">
       <div className="flex w-full items-center justify-between px-3">
         <div className="px-4 max-w-[200px]">
           <a href="/">
