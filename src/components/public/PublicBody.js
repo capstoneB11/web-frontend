@@ -1,11 +1,12 @@
 import React from 'react'
+import welcomeimage from '../../assets/welcome-image-2.webp'
 
 const PublicBody = () => {
   return (
     <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2">
           <img
-            src="/welcome-image-2.webp"
+            src={welcomeimage}
             alt="Image"
             className="w-full h-auto"
           />

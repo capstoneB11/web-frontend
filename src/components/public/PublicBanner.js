@@ -1,4 +1,5 @@
 import React from 'react'
+import WelcomeImage from '../../assets/welcome-image.webp'
 
 const PublicBanner = ({ topSectionHeight }) => {
   return (
@@ -7,7 +8,7 @@ const PublicBanner = ({ topSectionHeight }) => {
         className="flex flex-col items-center justify-center bg-cover bg-center relative transition-height duration-500"
       >
         <img
-          src="/welcome-image.webp"
+          src={WelcomeImage}
           alt="Welcome"
           className="w-full h-full object-cover object-center"
         />
