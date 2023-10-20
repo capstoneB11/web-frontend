@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import PublicBanner from './PublicBanner';
-import PublicBody from './PublicBody';
+import PublicBanner from '../components/public/PublicBanner';
+import PublicBody from '../components/public/PublicBody';
 
 const Public = () => {
   const [scrollY, setScrollY] = useState(0);

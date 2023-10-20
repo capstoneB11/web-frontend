@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Logo from '../../assets/png/logo-white.png'
 
 const PublicHeader = () => {
   const location = useLocation()
@@ -23,7 +24,7 @@ const PublicHeader = () => {
         <div className="px-4 max-w-[200px]">
           <a href="/">
             <img 
-              src="/png/logo-white.png" 
+              src={Logo} 
               alt="Welcome" 
               className="max-w-full h-24" />
           </a>

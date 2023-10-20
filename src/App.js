@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import Layouts from './components/Layouts';
-import Public from './components/public/Public';
+import Public from './pages/Public';
 import { Route, Routes } from 'react-router-dom';
-import LoginPage from './components/auth/login/LoginPage';
-import RegisterPage from './components/auth/register/RegisterPage';
-import HomePage from './components/dashboard/home/HomePage';
-import TrackerPage from './components/dashboard/tracker/TrackerPage';
-import SummaryPage from './components/dashboard/summary/SummaryPage';
+import {
+  LoginPage,
+  RegisterPage,
+  HomePage,
+  TrackerPage,
+  SummaryPage
+} from './pages';
 
 function App() {
   return (
