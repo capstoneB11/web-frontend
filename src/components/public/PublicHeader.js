@@ -35,7 +35,7 @@ const PublicHeader = () => {
             <a
               key={menuItem.label}
               href={menuItem.path}
-              className="text-white hover:text-orange-600 focus:text-orange-500"
+              className="text-white hover:text-black focus:text-black"
               >
               {menuItem.label}
             </a>
@@ -45,14 +45,14 @@ const PublicHeader = () => {
           {isMenuOpen ? (
             <button
               onClick={toggleMenu}
-              className="text-xl text-black hover:text-orange-600"
+              className="text-xl text-white hover:text-black"
             >
               ✕ {/* Close icon (e.g., 'X') when the menu is open */}
             </button>
           ) : (
             <button
               onClick={toggleMenu}
-              className="text-xl text-black hover:text-orange-600"
+              className="text-xl text-white hover:text-black"
             >
               ☰ {/* Hamburger icon (e.g., '☰') when the menu is closed */}
             </button>
