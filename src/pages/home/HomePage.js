@@ -35,7 +35,6 @@ const HomePage = () => {
     content = (
     <div className="loading-container items-center justify-center">
       <Lottie options={loaderOptions} height={200} width={200} />
-
     </div>
     )
   } else {
@@ -43,9 +42,9 @@ const HomePage = () => {
       <div className="p-4">
         <h1 className="text-4xl font-bold">Hello Yazid!</h1>
         <div className="flex flex-col lg:flex-row mt-4">
-          <div className="w-full lg:w-1/2 pr-4">
-            <h2 className="text-2xl font-bold">Hasil Prediksi</h2>
-            <div className="bg-gray-200 p-4 h-screen rounded-lg shadow">
+          <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
+            <div className="bg-gray-200 p-4 h-full rounded-lg shadow">
+              <h2 className="text-2xl font-bold">Hasil Prediksi</h2>
               <p className="text-sm italic">{today}, {weatherData.location.name}, {weatherData.location.region}</p>
               <div className="flex items-center justify-center mt-2">
                 <img src={weatherData.current.condition.icon} alt="Icon" className="w-10 h-10" />
@@ -74,26 +73,26 @@ const HomePage = () => {
             </div>
           </div>
           <div className="w-full lg:w-1/2">
-            <h2 className="text-2xl font-bold">Foto Kandang</h2>
             <div className="bg-gray-200 p-4 h-full rounded-md shadow">
-            <Carousel
-              showThumbs={false}
-              selectedItem={selectedImage}
-              onChange={(index) => setSelectedImage(index)}
-            >
-              {imageCarouselData.map((image, index) => (
-              <div className='max-h-screen' key={index}>
-                <div className='w-full h-screen flex items-center justify center'>
-                  <img 
-                    src={image.download_url}
-                    alt={`Image ${index}`}
-                    className="w-full h-full object-cover"
-                    style={{ transform: 'scale(0.8)' }} />
-                </div>
-              </div>                  
-              ))}
-            </Carousel>
-            <p>Date: puqqy</p>
+              <h2 className="text-2xl font-bold">Foto Kandang</h2>
+              <Carousel
+                showThumbs={false}
+                selectedItem={selectedImage}
+                onChange={(index) => setSelectedImage(index)}
+              >
+                {imageCarouselData.map((image, index) => (
+                <div className='max-h-screen' key={index}>
+                  <div className='w-full h-screen flex items-center justify center'>
+                    <img 
+                      src={image.download_url}
+                      alt={`Image ${index}`}
+                      className="w-full h-full object-cover"
+                      style={{ transform: 'scale(0.8)' }} />
+                  </div>
+                </div>                  
+                ))}
+              </Carousel>
+              <p>Date: puqqy</p>
             </div>
           </div>
         </div>
