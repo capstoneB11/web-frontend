@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from '../../components/auth/Form'
+import LoginImage from '../../assets/svg/login-image.svg'
 
 const LoginPage = () => {
 
@@ -14,7 +15,7 @@ const LoginPage = () => {
       {/* Left Side (Image) - Hidden on Small Screens */}
       <div className="hidden lg:block lg:w-1/2 h-1/3 lg:h-screen bg-cover bg-center relative">
         <img 
-          src="/svg/login-image.svg" 
+          src={LoginImage}
           alt="Welcome" 
           className="w-full h-full object-cover object-center" />
       </div>
