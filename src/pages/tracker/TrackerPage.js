@@ -21,19 +21,32 @@ ChartJS.register(
 )
 
 const TrackerPage = () => {
-  // Bar Chart Data and Options
-  const barChartData = {
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  // Function to generate random data for the chart
+  const generateRandomData = (days) => {
+    const labels = Array.from({ length: days }, (_, i) => `Day ${i + 1}`);
+    const data = Array.from({ length: days }, () => Math.floor(Math.random() * 100));
+    return { labels, data };
+  };
+
+  // Initialize the bar chart data with default values
+  const initialDays = 7; // Default number of days
+  const { labels, data } = generateRandomData(initialDays);
+
+  const [barChartData, setBarChartData] = useState({
+    labels,
     datasets: [
       {
         label: 'Number of Chickens',
-        data: [50, 60, 70, 55],
+        data,
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
     ],
-  };
+  });
 
   const barChartOptions = {
     scales: {
@@ -43,8 +56,24 @@ const TrackerPage = () => {
     },
   };
 
-  // Calendar
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  // Function to handle date change in the calendar
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const days = Math.floor((Date.now() - date) / (1000 * 60 * 60 * 24)); // Calculate days
+    const { labels, data } = generateRandomData(days);
+    setBarChartData({
+      labels,
+      datasets: [
+        {
+          label: 'Number of Chickens',
+          data,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+        },
+      ],
+    });
+  };
 
   return (
     <div className="p-4">
@@ -59,7 +88,7 @@ const TrackerPage = () => {
         <div className="w-full lg:w-1/2">
           <div className="bg-gray-200 p-4 rounded-lg shadow flex flex-col items-center justify-center h-full">
             <h2 className="text-2xl font-bold">Riwayat</h2>
-            <Calendar value={selectedDate} onChange={setSelectedDate} />
+            <Calendar value={selectedDate} onChange={handleDateChange} />
             <p>Selected Date: {selectedDate.toDateString()}</p>
           </div>
         </div>
