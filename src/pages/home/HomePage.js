@@ -8,6 +8,7 @@ import loader from '../../assets/loading-anim.json';
 import { useLocation } from '../../hooks/useLocation';
 import { useImageCarousel } from '../../hooks/useImageCarousel';
 import { useWeatherData } from '../../hooks/useWeatherData';
+import { formatDate } from '../../utils/formatDate';
 
 const HomePage = () => {
 
@@ -25,13 +26,13 @@ const HomePage = () => {
   const loaderOptions = {
     loop: true,
     autoplay: true,
-    animationData: loader, // Replace with your Lottie animation JSON
+    animationData: loader,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid meet',
     },
   };  
 
-  if (weatherData === null) {
+  if (weatherData === null || imageCarouselData.length === 0  ) {
     content = (
     <div className="loading-container items-center justify-center">
       <Lottie options={loaderOptions} height={200} width={200} />
@@ -75,24 +76,28 @@ const HomePage = () => {
           <div className="w-full lg:w-1/2">
             <div className="bg-gray-200 p-4 h-full rounded-md shadow">
               <h2 className="text-2xl font-bold">Foto Kandang</h2>
+
               <Carousel
                 showThumbs={false}
                 selectedItem={selectedImage}
-                onChange={(index) => setSelectedImage(index)}
-              >
+                onChange={(index) => setSelectedImage(index)} >
                 {imageCarouselData.map((image, index) => (
                 <div className='max-h-screen' key={index}>
                   <div className='w-full h-screen flex items-center justify center'>
-                    <img 
-                      src={image.download_url}
-                      alt={`Image ${index}`}
-                      className="w-full h-full object-cover"
-                      style={{ transform: 'scale(0.8)' }} />
+                  <img
+                    src={`${image.image}`}
+                    alt={`Image ${index}`}
+                    className="w-full h-auto object-cover max-w-full"
+                    style={{ maxWidth: '100%' }}
+                  />
                   </div>
                 </div>                  
                 ))}
               </Carousel>
-              <p>Date: puqqy</p>
+              <p>
+                {`Gambar Diambil Pada: ${formatDate(imageCarouselData[selectedImage].timestamp)}`}
+              </p>
+
             </div>
           </div>
         </div>
