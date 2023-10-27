@@ -15,7 +15,7 @@ const RegisterPage = () => {
     const { result, error } = await signUp(email, password);
   
     if (error) {
-      window.alert("Password and confirmation do not match.");
+      window.alert(`something went wrong : ${error}`);
     } else {
       console.log(result);
       window.alert("Registration successful!");
