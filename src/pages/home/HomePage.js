@@ -32,7 +32,7 @@ const HomePage = () => {
     },
   };  
 
-  if (weatherData === null || imageCarouselData.length === 0  ) {
+  if ( weatherData === null || imageCarouselData.length === 0 ) {
     content = (
     <div className="loading-container items-center justify-center">
       <Lottie options={loaderOptions} height={200} width={200} />

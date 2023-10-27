@@ -1,11 +1,28 @@
-import React from 'react'
+import { React, useState } from 'react'
 import Form from '../../components/auth/Form'
+import signUp from '../../lib/firebase/signUp';
 
 const RegisterPage = () => {
 
-    const handleRegisterSubmit = (e) => {
-        e.preventDefault();
+  const handleRegisterSubmit = async (e, email, password, passwordConfirm) => {
+    e.preventDefault();
+  
+    if (password !== passwordConfirm) {
+      window.alert("Password and confirmation do not match.");
+      return;
     }
+  
+    const { result, error } = await signUp(email, password);
+  
+    if (error) {
+      window.alert(`something went wrong : ${error}`);
+    } else {
+      console.log(result);
+      window.alert("Registration successful!");
+      // Registration successful, you can add any further logic here
+    }
+  };
+  
 
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row bg-gray-100">
