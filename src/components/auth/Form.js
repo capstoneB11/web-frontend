@@ -1,8 +1,13 @@
 // Form.js (Reusable Form Component)
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-center h-screen">
       <div className="w-full lg:w-96 p-8 bg-white rounded-lg shadow-lg text-center lg:text-left">
@@ -11,16 +16,18 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
           {isLogin ? "Welcome to our awesome platform." : "Create your account."}
         </p>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={(e) => onSubmit(e, email, password, passwordConfirm)}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-600">
-              Username
+            <label htmlFor="email" className="block text-gray-600">
+              Email
             </label>
             <input
-              type="text"
-              id="username"
-              name="username"
+              required type="email"
+              id="email"
+              name="email"
+              placeholder="chickount@mail.com"
               className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -32,6 +39,7 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
               id="password"
               name="password"
               className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -45,6 +53,7 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
                 id="passwordConfirm"
                 name="passwordConfirm"
                 className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
+                onChange={(e) => setPasswordConfirm(e.target.value)}
               />
             </div>
           )}
