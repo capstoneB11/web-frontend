@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Logo from '../../assets/png/logo-white.png'
+import Logo from '../../assets/png/icon_new.png'
 
 const PublicHeader = () => {
   const location = useLocation()
@@ -19,14 +19,14 @@ const PublicHeader = () => {
   ]
 
   return (
-    <header className="sticky top-0 left-0 w-full bg-orange-500 shadow-md z-10 h-24">
-      <div className="flex w-full items-center justify-between px-3">
-        <div className="px-4 max-w-[200px]">
+    <header className="sticky top-0 left-0 w-full bg-orange-500 shadow-md z-10 sm:h-24 h-20">
+      <div className="flex w-full items-center justify-between px-3 md:px-16">
+        <div className="sm:px-3 py-4 max-w-full">
           <a href="/">
             <img 
               src={Logo} 
               alt="Welcome" 
-              className="max-w-full h-24" />
+              className="max-w-full sm:h-16 h-12" />
           </a>
         </div>
         <div className="hidden px-4 lg:flex space-x-4">

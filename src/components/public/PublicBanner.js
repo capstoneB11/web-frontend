@@ -13,8 +13,8 @@ const PublicBanner = ({ topSectionHeight }) => {
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
-        <h1 className="text-5xl font-bold text-white absolute top-1/2 transform -translate-y-1/2">
-          Welcome to Our Site
+        <h1 className="text-center text-2xl sm:text-5xl font-bold text-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          Welcome to Chicken Counter
         </h1>
     </div>
   )
