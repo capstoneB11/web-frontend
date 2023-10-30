@@ -4,7 +4,7 @@ import welcomeimage from '../../assets/welcome-page-3.jpg'
 const PublicBody = () => {
   return (
     <div className="flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3 hidden lg:block">
           <img
             src={welcomeimage}
             alt="Image"
