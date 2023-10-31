@@ -1,12 +1,33 @@
 import React from 'react'
 import Form from '../../components/auth/Form'
 import LoginImage from '../../assets/svg/login-image.svg'
+import signIn from '../../lib/firebase/signIn'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
+  
+  const navigate = useNavigate();
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e, email, password) => {
     e.preventDefault();
-    // Handle login logic here
+  
+    const { result, error } = await signIn(email, password);
+
+    const userToken = await result.user.getIdToken()
+  
+    if (error) {
+      window.alert(`something went wrong : ${error}`);
+    } else {
+      console.log(result);
+      window.alert("Login successful!");
+      // Store the token in local storage
+      localStorage.setItem('userToken', userToken);
+      window.alert("Login successful!");
+
+      // Redirect to the dashboard/home route
+      navigate('/dashboard/home');
+      // Registration successful, you can add any further logic here
+    }
   };
 
   return (

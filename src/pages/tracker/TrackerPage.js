@@ -11,6 +11,7 @@ import {
 import { Bar, Line } from 'react-chartjs-2'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(
   BarElement,
@@ -20,8 +21,7 @@ ChartJS.register(
   Legend
 )
 
-const TrackerPage = () => {
-
+const TrackerPage = ({userToken}) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   // Function to generate random data for the chart
