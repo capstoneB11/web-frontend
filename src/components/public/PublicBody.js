@@ -4,13 +4,13 @@ import welcomeimage from '../../assets/welcome-page-3.jpg'
 const PublicBody = () => {
   return (
     <div className="flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/3">
-          <img
-            src={welcomeimage}
-            alt="Image"
-            className="w-full h-auto"
-          />
-        </div>
+      <div className="w-full lg:w-1/4 hidden lg:block relative">
+        <img
+          src={welcomeimage}
+          alt="Image"
+          className="absolute w-full h-full object-cover"
+        />
+      </div>
         <div className="w-full p-8 md:p-10 sm:p-16 bg-gray-100 lg:py-48">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
             What is Chicken Counter?
