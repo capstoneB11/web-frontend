@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import Layouts from './components/Layouts';
 import Public from './pages/Public';
@@ -15,17 +15,12 @@ import Error from './utils/Error';
 
 function App() {
 
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userToken, setUserToken] = useState('');
 
   useEffect(() => {
     // Check if the user token exists in local storage
     const userToken = localStorage.getItem('userToken');
-    if (userToken) {
-      // User is logged in
-      setUserLoggedIn(true);
-    } else {
-      setUserLoggedIn(false);
-    }
+    setUserToken(userToken)
   }, []);
 
   return (
@@ -35,25 +30,26 @@ function App() {
         <Route path = "login" element = {<LoginPage/>}/>
         <Route path = "register" element = {<RegisterPage/>}/>
 
-        {userLoggedIn ? (
-          <>
-            <Route path = "dashboard">
-              <Route index element = {<HomePage/>}/>
-              <Route path = "home" element = {<HomePage/>}/>
-              <Route path = "tracker" element = {<TrackerPage/>}/>
-              <Route path = "summary" element = {<SummaryPage/>}/>
-            </Route>
-          </>
-        ) : (
-          () => <Navigate to="/" />
-        )}
-
-        {/* Catch-all route for undefined paths */}
-        <Route path="*" element={<Error />} />
+        <Route path="dashboard" element={<ProtectedRoutes userToken = {userToken} />} />
 
       </Route>
+
+      <Route path="*" element={<Error />} />
+
     </Routes>
   );
 }
+
+// Separate component for authenticated routes
+const ProtectedRoutes = ({userToken}) => {
+  return (
+    <>
+      <Route index element={<HomePage userToken={userToken} />} />
+      <Route path="home" element={<HomePage userToken={userToken}/>} />
+      <Route path="tracker" element={<TrackerPage userToken={userToken}/>} />
+      <Route path="summary" element={<SummaryPage userToken={userToken} />} />
+    </>
+  );
+};
 
 export default App;

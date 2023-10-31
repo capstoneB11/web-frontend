@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faCoins } from '@fortawesome/free-solid-svg-icons';
 
-const SummaryPage = () => {
+const SummaryPage = ({userToken}) => {
   return (
     <div className="p-4">
       <h1 className="text-4xl font-bold">Summary</h1>

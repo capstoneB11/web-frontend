@@ -3,21 +3,20 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Lottie from 'react-lottie';
 import loader from '../../assets/loading-anim.json';
 import { useLocation } from '../../hooks/useLocation';
 import { useImageCarousel } from '../../hooks/useImageCarousel';
 import { useWeatherData } from '../../hooks/useWeatherData';
 import { formatDate } from '../../utils/formatDate';
+import Loader from '../../utils/Loader';
 
-const HomePage = () => {
+const HomePage = ({userToken}) => {
 
   let content 
 
   const imageCarouselData  = useImageCarousel();
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);
-
   const [selectedImage, setSelectedImage] = useState(0);
 
   const date = new Date()
@@ -34,9 +33,8 @@ const HomePage = () => {
 
   if ( weatherData === null || imageCarouselData.length === 0 ) {
     content = (
-    <div className="loading-container items-center justify-center">
-      <Lottie options={loaderOptions} height={200} width={200} />
-    </div>
+      <Loader 
+        loaderOptions = {loaderOptions}/>
     )
   } else {
     content = (
