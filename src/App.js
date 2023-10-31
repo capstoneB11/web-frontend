@@ -30,7 +30,12 @@ function App() {
         <Route path = "login" element = {<LoginPage/>}/>
         <Route path = "register" element = {<RegisterPage/>}/>
 
-        <Route path="dashboard" element={<ProtectedRoutes userToken = {userToken} />} />
+        <Route path="dashboard">
+          <Route index element={<HomePage userToken={userToken} />} />
+          <Route path="home" element={<HomePage userToken={userToken}/>} />
+          <Route path="tracker" element={<TrackerPage userToken={userToken}/>} />
+          <Route path="summary" element={<SummaryPage userToken={userToken} />} />
+        </Route>
 
       </Route>
 
@@ -39,17 +44,5 @@ function App() {
     </Routes>
   );
 }
-
-// Separate component for authenticated routes
-const ProtectedRoutes = ({userToken}) => {
-  return (
-    <>
-      <Route index element={<HomePage userToken={userToken} />} />
-      <Route path="home" element={<HomePage userToken={userToken}/>} />
-      <Route path="tracker" element={<TrackerPage userToken={userToken}/>} />
-      <Route path="summary" element={<SummaryPage userToken={userToken} />} />
-    </>
-  );
-};
 
 export default App;

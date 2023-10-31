@@ -31,7 +31,9 @@ const Public = () => {
       <PublicBanner topSectionHeight={topSectionHeight} /> {/* Pass topSectionHeight as a prop */}
 
       {/* Second Section */}
-      <PublicBody/>
+      <PublicBody />
+
+      
 
     </div>
   );
