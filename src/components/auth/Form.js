@@ -46,11 +46,11 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
   }
 
   return (
-    <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-center h-screen">
-      <div className="w-full lg:w-96 p-8 bg-white rounded-lg shadow-lg text-center lg:text-left">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">{title}</h1>
+    <div className="w-full lg:w-1/2 flex bg-white items-center justify-center lg:justify-center h-screen">
+      <div className="mx-6 w-full md:w-3/5 p-8 bg-white rounded-lg shadow-2xl text-left">
+        <h1 className="lg:text-4xl text-3xl font-bold text-gray-800 mb-4">{title}</h1>
         <p className="text-gray-600 mb-6">
-          {isLogin ? "Welcome to our awesome platform." : "Create your account."}
+          {isLogin ? "Please enter your details" : "Create your account."}
         </p>
 
         <form onSubmit={(e) => onSubmit(e, email, password, passwordConfirm)}>
@@ -101,7 +101,7 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
             {isLogin
               ? "Don't have an account? "
               : "Already have an account? "}
-            <Link to={isLogin ? '/register' : '/login'} className="text-blue-500 hover:underline">
+            <Link to={isLogin ? '/register' : '/login'} className="text-blue-400 hover:text-blue-600">
               {isLogin ? "Register here" : "Sign in here"}
             </Link>
           </p>
