@@ -1,6 +1,8 @@
-import { React, useState } from 'react'
+import { React, useState, lazy, Suspense } from 'react'
 import Form from '../../components/auth/Form'
-import signUp from '../../lib/firebase/signUp';
+import signUp from '../../lib/firebase/signUp'
+import Spinner from '../../utils/Spinner'
+const LazyImage = lazy(() => import('../../utils/LazyImage'));
 
 const RegisterPage = () => {
 
@@ -27,10 +29,12 @@ const RegisterPage = () => {
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row bg-gray-100">
         <div className="hidden lg:block lg:w-1/2 h-1/3 lg:h-screen bg-cover bg-center relative">
-            <img 
+          <Suspense fallback={<Spinner/>}>
+            <LazyImage 
             src="/svg/login-image.svg" 
             alt="Welcome" 
             className="w-full h-full object-cover object-center" />
+          </Suspense>
         </div>
 
         <Form

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import Form from '../../components/auth/Form'
 import LoginImage from '../../assets/welcome-page-4.jpg'
 import signIn from '../../lib/firebase/signIn'
 import { useNavigate } from 'react-router-dom'
+import Spinner from '../../utils/Spinner'
+const LazyImage = lazy(() => import('../../utils/LazyImage'))
 
 const LoginPage = () => {
   
@@ -35,10 +37,12 @@ const LoginPage = () => {
     <div className="min-h-screen flex flex-col-reverse lg:flex-row bg-gray-100">
       {/* Left Side (Image) - Hidden on Small Screens */}
       <div className="hidden lg:block lg:w-1/2 h-1/3 lg:h-screen bg-cover bg-center relative">
-        <img 
-          src={LoginImage}
-          alt="Welcome" 
-          className="w-full h-full object-cover object-center" />
+        <Suspense fallback={<Spinner/>}>
+          <LazyImage 
+            src={LoginImage}
+            alt="Welcome" 
+            className="w-full h-full object-cover object-center" />
+        </Suspense>
       </div>
 
       {/* Right Side (Sign-in Form) */}
