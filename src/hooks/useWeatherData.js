@@ -7,7 +7,7 @@ export function useWeatherData(userLocation) {
     if (userLocation) {
       const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
       const cleanApiKey = API_KEY.replace(/["'`]/g, ''); // This will remove single and double quotes.
-      const weatherAPIURL = `http://api.weatherapi.com/v1/current.json?key=${cleanApiKey}&q=${userLocation.lat},${userLocation.lon}&aqi=no`;
+      const weatherAPIURL = `https://api.weatherapi.com/v1/current.json?key=${cleanApiKey}&q=${userLocation.lat},${userLocation.lon}&aqi=no`;
       
       fetch(weatherAPIURL)
         .then((response) => response.json())
@@ -18,6 +18,7 @@ export function useWeatherData(userLocation) {
         })
         .catch((error) => {
           console.error('Error fetching weather data:', error);
+          console.log(API_KEY);
         });
     }
   }, [userLocation]);
