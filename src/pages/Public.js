@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PublicBanner from '../components/public/PublicBanner';
 import PublicBody from '../components/public/PublicBody';
+import Steps from '../components/public/Steps';
 
 const Public = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -33,6 +34,7 @@ const Public = () => {
       {/* Second Section */}
       <PublicBody />
 
+      <Steps/>
       
 
     </div>
