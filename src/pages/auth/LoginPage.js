@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from '../../components/auth/Form'
-import LoginImage from '../../assets/svg/login-image.svg'
+import LoginImage from '../../assets/welcome-page-4.jpg'
 import signIn from '../../lib/firebase/signIn'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,7 +43,7 @@ const LoginPage = () => {
 
       {/* Right Side (Sign-in Form) */}
       <Form
-        title="Hello, get started!"
+        title="Welcome back!"
         buttonText="Sign In"
         showPasswordConfirm={false}
         isLogin={true}
