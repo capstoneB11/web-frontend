@@ -11,6 +11,7 @@ export function useWeatherData(userLocation) {
       fetch(weatherAPIURL)
         .then((response) => response.json())
         .then((data) => {
+          console.log(data)
           setWeatherData(data);
         })
         .catch((error) => {

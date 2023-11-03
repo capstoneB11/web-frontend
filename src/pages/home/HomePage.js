@@ -11,9 +11,7 @@ import { formatDate } from '../../utils/formatDate';
 import Loader from '../../utils/Loader';
 
 const HomePage = ({userToken}) => {
-
   let content 
-
   const imageCarouselData  = useImageCarousel();
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);
