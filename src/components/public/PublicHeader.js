@@ -19,14 +19,14 @@ const PublicHeader = () => {
   ]
 
   return (
-    <header className="sticky top-0 left-0 w-full bg-orange-100 shadow-md z-10 sm:h-24 h-20">
+    <header className="sticky top-0 left-0 w-full bg-orange-1 shadow-md z-10 sm:h-24 h-20">
       <div className="flex w-full h-full items-center justify-between px-4 sm:px-8">
         <div className="w-1/3 max-h-full sm:max-w-full">
           <a href="/">
             <img 
               src={Logo} 
               alt="Welcome" 
-              className="object-contain lg:scale-50 sm:scale-75 scale-100 sm:h-24" />
+              className="object-contain md:h-16 scale-100 sm:h-24 transition-transform hover:scale-110 duration-300" />
           </a>
         </div>
         <div className="hidden px-4 lg:flex space-x-4">

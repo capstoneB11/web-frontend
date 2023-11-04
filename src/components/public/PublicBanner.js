@@ -17,7 +17,7 @@ const PublicBanner = ({ topSectionHeight }) => {
           />
         </Suspense>
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
-        <h1 className="mx-16 text-center text-3xl sm:text-5xl font-bold text-white absolute">
+        <h1 className="mx-16 text-center text-3xl sm:text-5xl font-bold text-white drop-shadow-2xl absolute hover:translate-y-4 transition-transform duration-300">
           Welcome to Chicken Counter
         </h1>
     </div>

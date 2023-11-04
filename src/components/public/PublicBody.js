@@ -6,7 +6,7 @@ const LazyImage = lazy(() => import('../../utils/LazyImage'));
 
 const PublicBody = () => {
   return (
-    <div className="flex flex-col lg:flex-row bg-orange-2" >
+    <div className="flex flex-col lg:flex-row bg-orange-3" >
 
 
       <div className="w-full lg:w-1/3 hidden lg:block relative">
@@ -21,19 +21,16 @@ const PublicBody = () => {
 
 
       <div className="w-full p-12 md:p-10 lg:py-48 lg:px-24">
-        <h2 className="sm:text-5xl text-4xl font-bold text-gray-800">
+        <h2 className="sm:text-5xl text-4xl font-bold text-white">
           What is Chicken Counter?
         </h2>
         <p className="sm:text-xl text-md mt-8 text-black">
-        "Chicken Counter" is an innovative IoT application that employs the ESP32-CAM 
-        to capture images of chickens in a coop and utilizes advanced machine learning algorithms to provide 
-        real-time estimates of the current chicken population. This groundbreaking technology offers accurate and efficient monitoring of poultry farms, 
-        ensuring precise data for better farm management.  
+        Chicken Counter adalah sebuah sistem yang dirancang untuk mengautomasi proses penghitungan jumlah ayam broiler dalam sebuah kandang. Chicken Counter memanfaatkan teknologi IoT dan Machine Learning untuk memprediksi jumlah ayam. Hasil perhitungan ditampilkan di sebuah dashboard web. 
         </p>
       </div>{/*  End of Center Texzt */}
 
       
-      <div className="flex items-center w-1/3 mt-36 bg-orange-2 pr-12 hidden sm:block">
+      <div className="flex items-center w-1/3 mt-36 bg-orange-3 pr-12 hidden lg:block">
           <img
             src={ayamBanyak}
             alt="Image"
