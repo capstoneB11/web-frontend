@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/png/logo-ayam2.png'
+import Logo from '../assets/png/logo-new.png'
 
 export default function Error() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 h-screen w-full bg-gray">
-      <div className="grid justify-items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-1 h-screen w-full bg-gray-100">
+      <div className="grid justify-items-center py-10">
         <img className="w-auto h-auto" src={Logo} alt="Logo"></img>
 
         <p className="text-center text-5xl font-bold p-2 text-black">Error 404</p>

@@ -7,9 +7,9 @@ import image4 from '../../assets/step4.png'
 
 const Steps = () => {
   return (
-    <div className="p-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Bagaimana Chicken Counter bekerja?</h2>
-        <div className="flex flex-col lg:flex-row justify-between">
+    <div className="p-20 bg-orange-100">
+        <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center mb-12">Bagaimana Chicken Counter bekerja?</h2>
+        <div className="flex flex-col lg:flex-row justify-between bg-orange-10 px-40">
             <StepsItem 
                 imageItem={image1}
                 textTitle={"Pasang ESP32-CAM"}

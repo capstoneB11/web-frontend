@@ -5,6 +5,11 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js"
   ],
   plugins: [require("tw-elements/dist/plugin.cjs")],
-  darkMode: "class"
+  darkMode: "class",
+  theme:{
+    colors:{
+      'orange-2':'#FEDF9E'
+    },
+  },
 };
 
