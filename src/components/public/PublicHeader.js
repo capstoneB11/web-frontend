@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Logo from '../../assets/png/logo-ayam2.png'
+import Logo from '../../assets/png/logo-new.png'
 
 const PublicHeader = () => {
   const location = useLocation()
@@ -11,7 +11,7 @@ const PublicHeader = () => {
   };
 
   const menuItems = [
-    { label: 'About Us', path: '/', shouldDisplay: location.pathname === '/' || location.pathname === '/login' },
+    { label: 'Homepage', path: '/', shouldDisplay: location.pathname === '/' || location.pathname === '/login' },
     { label: 'Login', path: 'login', shouldDisplay: location.pathname === '/' || location.pathname === '/about' },
     { label: 'Home', path: '/dashboard/home', shouldDisplay: location.pathname.startsWith('/dashboard')},
     { label: 'Tracker', path: '/dashboard/tracker', shouldDisplay: location.pathname.startsWith('/dashboard')},
@@ -19,14 +19,14 @@ const PublicHeader = () => {
   ]
 
   return (
-    <header className="sticky top-0 left-0 w-full bg-orange-500 shadow-md z-10 sm:h-24 h-20">
-      <div className="flex w-full h-full items-center justify-between px-3 md:px-16">
-        <div className="sm:px-3 max-w-full">
+    <header className="sticky top-0 left-0 w-full bg-orange-100 shadow-md z-10 sm:h-24 h-20">
+      <div className="flex w-full h-full items-center justify-between px-4 sm:px-8">
+        <div className="w-1/3 max-h-full sm:max-w-full">
           <a href="/">
             <img 
               src={Logo} 
               alt="Welcome" 
-              className="sm:h-16 h-full scale-125" />
+              className="object-contain lg:scale-50 sm:scale-75 scale-100 sm:h-24" />
           </a>
         </div>
         <div className="hidden px-4 lg:flex space-x-4">
@@ -35,7 +35,7 @@ const PublicHeader = () => {
             <a
               key={menuItem.label}
               href={menuItem.path}
-              className="text-white hover:text-black focus:text-black"
+              className="font-medium text-orange-500 hover:text-orange-300 px-4 focus:text-black text-bold-2"
               >
               {menuItem.label}
             </a>
@@ -45,14 +45,14 @@ const PublicHeader = () => {
           {isMenuOpen ? (
             <button
               onClick={toggleMenu}
-              className="text-xl text-white hover:text-black"
+              className="text-xl text-orange-500 hover:text-black"
             >
               ✕ {/* Close icon (e.g., 'X') when the menu is open */}
             </button>
           ) : (
             <button
               onClick={toggleMenu}
-              className="text-xl text-white hover:text-black"
+              className="text-xl text-orange-500 hover:text-black"
             >
               ☰ {/* Hamburger icon (e.g., '☰') when the menu is closed */}
             </button>
@@ -66,7 +66,7 @@ const PublicHeader = () => {
             <a
               key={menuItem.label}
               href={menuItem.path}
-              className="text-black hover:text-orange-600 focus:text-orange-500"
+              className="text-orange-500 hover:text-orange-300 focus:text-black"
               >
               {menuItem.label}
             </a>
