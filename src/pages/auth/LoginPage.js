@@ -15,7 +15,7 @@ const LoginPage = () => {
   
     const { result, error } = await signIn(email, password);
 
-    const userToken = await result.user.getIdToken()
+    const userToken = result.user.uid
   
     if (error) {
       window.alert(`something went wrong : ${error}`);
