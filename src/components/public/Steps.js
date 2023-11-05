@@ -7,9 +7,9 @@ import image4 from '../../assets/step4.png'
 
 const Steps = () => {
   return (
-    <div className="p-20 bg-orange-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center mb-12">Bagaimana Chicken Counter bekerja?</h2>
-        <div className="flex flex-col lg:flex-row justify-between bg-orange-10 px-40">
+    <div className="p-8 lg:px-8 lg:py-20 bg-orange-2">
+        <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-20">Bagaimana Chicken Counter bekerja?</h2>
+        <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 py-4 md:px-40 lg:justify-start">
             <StepsItem 
                 imageItem={image1}
                 textTitle={"Pasang ESP32-CAM"}
@@ -27,7 +27,7 @@ const Steps = () => {
                 style={{ flex: 1 }}/>
             <StepsItem
                 imageItem={image4}
-                textTitle={"Hasil muncul di dashboard web"}
+                textTitle={"Hasil tampil pada dashboard"}
                 textBody={"Hasil perhitungan ayam menggunakan ML akan ditampilkan di dashboard peternak"}
                 style={{ flex: 1 }}/>
         </div>
