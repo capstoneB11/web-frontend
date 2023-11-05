@@ -15,14 +15,6 @@ import Error from './utils/Error';
 
 function App() {
 
-  const [userToken, setUserToken] = useState('');
-
-  useEffect(() => {
-    // Check if the user token exists in local storage
-    const userToken = localStorage.getItem('userToken');
-    setUserToken(userToken)
-  }, []);
-
   return (
     <Routes>
       <Route path = "/" element = {<Layouts/>}>
@@ -31,10 +23,10 @@ function App() {
         <Route path = "register" element = {<RegisterPage/>}/>
 
         <Route path="dashboard">
-          <Route index element={<HomePage userToken={userToken} />} />
-          <Route path="home" element={<HomePage userToken={userToken}/>} />
-          <Route path="tracker" element={<TrackerPage userToken={userToken}/>} />
-          <Route path="summary" element={<SummaryPage userToken={userToken} />} />
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="tracker" element={<TrackerPage />} />
+          <Route path="summary" element={<SummaryPage />} />
         </Route>
 
       </Route>

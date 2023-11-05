@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 )
 
-const TrackerPage = ({userToken}) => {
+const TrackerPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   // Function to generate random data for the chart
