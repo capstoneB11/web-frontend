@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faCoins } from '@fortawesome/free-solid-svg-icons';
+import SummaryInputField from '../../components/dashboard/SummaryInputField';
 
 const SummaryPage = () => {
 
@@ -8,6 +9,13 @@ const SummaryPage = () => {
   const [weight, setWeight] = useState(0); // State for Weight input
   const [productionCost, setProductionCost] = useState(0); // State for Production Cost input
   const [chickenCount, setChickenCount] = useState(0); // State for Chicken Count input
+
+  const [result, setResult] = useState(0)
+
+  const generateRandomNumber = () => {
+    const randomCount = Math.floor(Math.random() * 100); // Generates a random number between 0 and 100 (change as needed)
+    handleChickenCountChange(randomCount.toString());
+  };
 
   // Functions to handle input changes
   const handlePriceChange = (value) => {
@@ -30,6 +38,10 @@ const SummaryPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     // Perform calculations or other actions using the state variables: price, weight, productionCost, chickenCount
+
+    const totalResult = +price + +weight + +productionCost + +chickenCount;
+    setResult(totalResult);
+
   };
 
 
@@ -62,68 +74,75 @@ const SummaryPage = () => {
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
           <div className="bg-gray-200 p-4 rounded-lg shadow flex flex-col items-center justify-center h-full">
             <h2 className="text-2xl font-bold">Estimasi Hasil Panel</h2>
-            <form onSubmit={(e) => onSubmit(e, price, weight, productionCost, chickenCount)}>
-              <div className="mb-4">
-                <label htmlFor="price" className="block text-gray-600">
-                  Price
-                </label>
-                <input
-                  required
-                  type="number"
-                  id="price"
-                  name="price"
-                  placeholder="Enter price"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
-                  onChange={(e) => handlePriceChange(e.target.value)}
-                />
-                <div id="price-validation-msg" className="text-red-600"></div>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="weight" className="block text-gray-600">
-                  Weight
-                </label>
-                <input
-                  required
-                  type="number"
-                  id="weight"
-                  name="weight"
-                  placeholder="Enter weight"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
-                  onChange={(e) => handleWeightChange(e.target.value)}
-                />
-                <div id="weight-validation-msg" className="text-red-600"></div>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="productionCost" className="block text-gray-600">
-                  Production Cost
-                </label>
-                <input
-                  required
-                  type="number"
-                  id="productionCost"
-                  name="productionCost"
-                  placeholder="Enter production cost"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
-                  onChange={(e) => handleProductionCostChange(e.target.value)}
-                />
-                <div id="productionCost-validation-msg" className="text-red-600"></div>
-              </div>
-              <div className="mb-6">
-                <label htmlFor="chickenCount" className="block text-gray-600">
-                  Chicken Count
-                </label>
-                <input
-                  required
+            <form
+              className="w-full"
+              onSubmit={(e) => onSubmit(e)}>
+
+              <SummaryInputField
+                label="Harga Ayam per Kg (Rupiah)"
+                type="number"
+                id="price"
+                name="price"
+                placeholder="Masukkan Harga Ayam per Kg"
+                value={price}
+                handleInputChange={handlePriceChange}
+              />
+
+              <SummaryInputField
+                label="Rata-rata Bobot Ayam (Kg)"
+                type="number"
+                id="weight"
+                name="weight"
+                placeholder="Masukkan Rata-rata Bobot Ayam (Kg)"
+                value={weight}
+                handleInputChange={handleWeightChange}
+              />
+
+              <SummaryInputField
+                label="Total Biaya Produksi (Rupiah)"
+                type="number"
+                id="productionCost"
+                name="productionCost"
+                placeholder="Masukkan Total Biaya Produksi"
+                value={productionCost}
+                handleInputChange={handleProductionCostChange}
+              />
+
+              <div className="flex flex-col lg:flex-row items-center justify-between mb-4 lg:mb-0">
+
+                <SummaryInputField
+                  label="Jumlah Ayam (Ekor)"
                   type="number"
                   id="chickenCount"
                   name="chickenCount"
-                  placeholder="Enter chicken count"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
-                  onChange={(e) => handleChickenCountChange(e.target.value)}
+                  placeholder="Masukkan Jumlah Ayam (Ekor)"
+                  value={chickenCount}
+                  handleInputChange={handleChickenCountChange}
                 />
-                <div id="chickenCount-validation-msg" className="text-red-600"></div>
+
+                <p>Atau</p>
+
+                <button
+                  className="bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3"
+                  type="button"
+                  onClick={generateRandomNumber}
+                  >
+                  Gunakan Hasil Prediksi
+                </button>  
+
               </div>
+
+              <button
+                className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3"
+                type="submit"
+                >
+                Hitung
+              </button>
+
             </form>
+
+            <h1>Total : {result}</h1>
+
           </div>
         </div>
       </div>
