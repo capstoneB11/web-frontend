@@ -50,8 +50,8 @@ const HomePage = () => {
     );
   } else {
     content = (
-      <div className="p-4">
-        <h1 className="text-4xl font-bold">Hello Yazid!</h1>
+      <div className="p-6 sm:p-10">
+        <h1 className="text-3xl sm:text-4xl font-bold">Hello Yazid!</h1>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
             <div className="bg-gray-200 p-4 h-full rounded-lg shadow">
@@ -72,7 +72,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="mt-4 flex flex-col items-center justify-center">
-                <div style={{ width: 300, height: 300 }}>
+                <div style={{ width: 225, height: 225 }}>
                   <CircularProgressbar
                     value={95}
                     text={`${95}%`}
@@ -80,13 +80,14 @@ const HomePage = () => {
                       textSize: "36px",
                       textColor: "black",
                     })}
+                    className="scale-75 md:scale-100"
                   />
                 </div>
-                <p className="mt-2">Persentase Jumlah Ayam</p>
+                <p className="sm:mt-2 ">Persentase Jumlah Ayam</p>
               </div>
               <ul className="mt-4">
-                <li>Chickens that are alive: {275}</li>
-                <li>Number of chickens that are dead: {25}</li>
+                <li>Ayam hidup: {275}</li>
+                <li>Ayam mati: {25}</li>
               </ul>
             </div>
           </div>
@@ -94,33 +95,32 @@ const HomePage = () => {
             <div className="bg-gray-200 p-4 h-full rounded-md shadow">
               <h2 className="text-2xl font-bold">Foto Kandang</h2>
 
-              {imageCarouselData.length === 0 ? (<p>Belum Ada Data Foto</p>) : (
+              {imageCarouselData.length === 0 ? (
+                <p>Belum Ada Data Foto</p>
+              ) : (
                 <div>
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <ReactSwitch
-                        onChange={toggleFrame}
-                        checked={withFrame}
-                        onColor="#86d3ff"
-                        onHandleColor="#2693e6"
-                        handleDiameter={30}
-                        uncheckedIcon={false}
-                        checkedIcon={false}
+                      onChange={toggleFrame}
+                      checked={withFrame}
+                      onColor="#86d3ff"
+                      onHandleColor="#2693e6"
+                      handleDiameter={30}
+                      uncheckedIcon={false}
+                      checkedIcon={false}
                     />
                     <span
-                        className={`text-sm font-medium ${
+                      className={`text-sm font-medium ${
                         withFrame ? "text-indigo-600" : "text-gray-600"
-                        }`}
+                      }`}
                     >
-                        Tunjukkan Frame
+                      Tunjukkan Frame
                     </span>
                   </label>
 
-                  <HomeCarousel
-                    imageCarouselData={imageCarouselData}
-                  />
-              </div>
+                  <HomeCarousel imageCarouselData={imageCarouselData} />
+                </div>
               )}
-
             </div>
           </div>
         </div>
