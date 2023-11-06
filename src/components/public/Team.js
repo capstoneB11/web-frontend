@@ -1,14 +1,15 @@
 import React from "react";
 import StepsItem from "./StepsItem";
-import image1 from "../../assets/step1.png";
-import image2 from "../../assets/step2.png";
-import image3 from "../../assets/step3.png";
-import image4 from "../../assets/step4.png";
+import member1 from "../../assets/member1.png";
+import member2 from "../../assets/member2.png";
+import member3 from "../../assets/member3.png";
+import member4 from "../../assets/member4.png";
+import member5 from "../../assets/member5.png";
 
 const Steps = () => {
   return (
     <div className="p-8 lg:px-8 lg:py-20 bg-orange-2">
-      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-20 hover:scale-110 transition-transform duration-300">
+      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-20">
         Bagaimana Chicken Counter bekerja?
       </h2>
       <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 py-4 md:px-40 lg:justify-start">

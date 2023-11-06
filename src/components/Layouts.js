@@ -5,10 +5,10 @@ const Layouts = () => {
   return (
     <div>
       {/* Sticky Header */}
-      <PublicHeader/>
-      <Outlet/>
+      <PublicHeader />
+      <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default Layouts
+export default Layouts;
