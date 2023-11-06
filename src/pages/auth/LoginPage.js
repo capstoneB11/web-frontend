@@ -13,24 +13,37 @@ const LoginPage = () => {
   const handleLoginSubmit = async (e, email, password) => {
     e.preventDefault();
   
-    const { result, error } = await signIn(email, password);
-
-    const userToken = result.user.uid
+    try {
+      const { result, error } = await signIn(email, password);
   
-    if (error) {
-      window.alert(`something went wrong : ${error}`);
-    } else {
-      console.log(result);
-      window.alert("Login successful!");
-      // Store the token in local storage
-      localStorage.setItem('userToken', userToken);
-      window.alert("Login successful!");
-
-      // Redirect to the dashboard/home route
-      navigate('/dashboard/home');
-      // Registration successful, you can add any further logic here
+      if (error) {
+        // Handle specific error cases
+        switch (error.code) {
+          case 'auth/invalid-login-credentials':
+            window.alert('Email atau Password tidak valid/ belum terdaftar.');
+            break;
+          default:
+            window.alert(`Ada kesalahan: ${error.message}`);
+            break;
+        }
+      } else {
+        const userToken = result.user.uid;
+        console.log(result);
+        window.alert('Login successful!');
+        // Store the token in local storage
+        localStorage.setItem('userToken', userToken);
+        window.alert('Login successful!');
+  
+        // Redirect to the dashboard/home route
+        navigate('/dashboard/home');
+        // Registration successful, you can add any further logic here
+      }
+    } catch (e) {
+      console.error('Error:', e);
+      window.alert('An unexpected error occurred.');
     }
   };
+  
 
   return (
 

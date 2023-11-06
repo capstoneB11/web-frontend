@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import loader from "../../assets/loading-chicken-2.json";
 import { useLocation } from "../../hooks/useLocation";
 import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
-import { formatDate } from "../../utils/formatDate";
 import Loader from "../../utils/Loader";
+import HomeCarousel from "../../components/dashboard/HomeCarousel";
 import ReactSwitch from "react-switch";
 
 const HomePage = () => {
@@ -21,7 +20,6 @@ const HomePage = () => {
   const imageCarouselData = useImageCarousel(userToken, withFrame);
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);
-  const [selectedImage, setSelectedImage] = useState(0);
 
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-US", {
@@ -42,7 +40,7 @@ const HomePage = () => {
     },
   };
 
-  if (weatherData === null || imageCarouselData.length === 0) {
+  if (weatherData === null) {
     console.log(`USER TOKEN : ${userToken}`);
 
     content = (
@@ -96,48 +94,33 @@ const HomePage = () => {
             <div className="bg-gray-200 p-4 h-full rounded-md shadow">
               <h2 className="text-2xl font-bold">Foto Kandang</h2>
 
-              <label className="flex items-center space-x-2 cursor-pointer">
-                <ReactSwitch
-                  onChange={toggleFrame}
-                  checked={withFrame}
-                  onColor="#86d3ff"
-                  onHandleColor="#2693e6"
-                  handleDiameter={30}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                />
-                <span
-                  className={`text-sm font-medium ${
-                    withFrame ? "text-indigo-600" : "text-gray-600"
-                  }`}
-                >
-                  Tunjukkan Frame
-                </span>
-              </label>
+              {imageCarouselData.length === 0 ? (<p>Belum Ada Data Foto</p>) : (
+                <div>
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <ReactSwitch
+                        onChange={toggleFrame}
+                        checked={withFrame}
+                        onColor="#86d3ff"
+                        onHandleColor="#2693e6"
+                        handleDiameter={30}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                    />
+                    <span
+                        className={`text-sm font-medium ${
+                        withFrame ? "text-indigo-600" : "text-gray-600"
+                        }`}
+                    >
+                        Tunjukkan Frame
+                    </span>
+                  </label>
 
-              <Carousel
-                showThumbs={false}
-                selectedItem={selectedImage}
-                onChange={(index) => setSelectedImage(index)}
-              >
-                {imageCarouselData.map((image, index) => (
-                  <div className="max-h-screen" key={index}>
-                    <div className="w-full h-screen flex items-center justify center">
-                      <img
-                        src={`${image.image}`}
-                        alt={`Image ${index}`}
-                        className="w-full h-auto object-cover max-w-full"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </Carousel>
-              <p>
-                {`Gambar Diambil Pada: ${formatDate(
-                  imageCarouselData[selectedImage].timestamp
-                )}`}
-              </p>
+                  <HomeCarousel
+                    imageCarouselData={imageCarouselData}
+                  />
+              </div>
+              )}
+
             </div>
           </div>
         </div>
