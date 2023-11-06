@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faCoins } from '@fortawesome/free-solid-svg-icons';
 
-const SummaryPage = ({userToken}) => {
+const SummaryPage = () => {
 
   const [price, setPrice] = useState(0); // State for Price input
   const [weight, setWeight] = useState(0); // State for Weight input

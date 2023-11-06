@@ -3,16 +3,22 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import loader from "../../assets/loading-chicken.json";
+import loader from "../../assets/loading-anim.json";
 import { useLocation } from "../../hooks/useLocation";
 import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
 import { formatDate } from "../../utils/formatDate";
 import Loader from "../../utils/Loader";
+import ReactSwitch from "react-switch";
 
-const HomePage = ({ userToken }) => {
+const HomePage = () => {
   let content;
-  const imageCarouselData = useImageCarousel();
+
+  const userToken = localStorage.getItem("userToken").toString();
+
+  const [withFrame, setWithFrame] = useState(false);
+
+  const imageCarouselData = useImageCarousel(userToken, withFrame);
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -22,6 +28,10 @@ const HomePage = ({ userToken }) => {
     dateStyle: "full",
     timeStyle: "long",
   }).format(date);
+
+  const toggleFrame = () => {
+    setWithFrame(!withFrame); // Toggle the state of withFrame when the switch button is clicked
+  };
 
   const loaderOptions = {
     loop: true,
@@ -33,6 +43,8 @@ const HomePage = ({ userToken }) => {
   };
 
   if (weatherData === null || imageCarouselData.length === 0) {
+    console.log(`USER TOKEN : ${userToken}`);
+
     content = (
       <div className="flex h-screen items-center justify-center">
         <Loader loaderOptions={loaderOptions} />;
@@ -83,6 +95,25 @@ const HomePage = ({ userToken }) => {
           <div className="w-full lg:w-1/2">
             <div className="bg-gray-200 p-4 h-full rounded-md shadow">
               <h2 className="text-2xl font-bold">Foto Kandang</h2>
+
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <ReactSwitch
+                  onChange={toggleFrame}
+                  checked={withFrame}
+                  onColor="#86d3ff"
+                  onHandleColor="#2693e6"
+                  handleDiameter={30}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                />
+                <span
+                  className={`text-sm font-medium ${
+                    withFrame ? "text-indigo-600" : "text-gray-600"
+                  }`}
+                >
+                  Tunjukkan Frame
+                </span>
+              </label>
 
               <Carousel
                 showThumbs={false}
