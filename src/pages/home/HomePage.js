@@ -27,9 +27,6 @@ const HomePage = () => {
     timeStyle: "long",
   }).format(date);
 
-  const toggleFrame = () => {
-    setWithFrame(!withFrame); // Toggle the state of withFrame when the switch button is clicked
-  };
 
   const loaderOptions = {
     loop: true,
@@ -99,26 +96,10 @@ const HomePage = () => {
                 <p>Belum Ada Data Foto</p>
               ) : (
                 <div>
-                  <label className="flex items-center space-x-2 cursor-pointer">
-                    <ReactSwitch
-                      onChange={toggleFrame}
-                      checked={withFrame}
-                      onColor="#86d3ff"
-                      onHandleColor="#2693e6"
-                      handleDiameter={30}
-                      uncheckedIcon={false}
-                      checkedIcon={false}
-                    />
-                    <span
-                      className={`text-sm font-medium ${
-                        withFrame ? "text-indigo-600" : "text-gray-600"
-                      }`}
-                    >
-                      Tunjukkan Frame
-                    </span>
-                  </label>
-
-                  <HomeCarousel imageCarouselData={imageCarouselData} />
+                  <HomeCarousel 
+                    imageCarouselData={imageCarouselData}
+                    withFrame={withFrame}
+                    setWithFrame={setWithFrame} />
                 </div>
               )}
             </div>
