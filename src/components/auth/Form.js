@@ -108,7 +108,7 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
 
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-700"
+            className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3"
             disabled={!validEmail || !validPassword}
           >
             {buttonText}

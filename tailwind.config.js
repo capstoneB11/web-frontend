@@ -11,7 +11,7 @@ module.exports = {
       'orange-1':'#FFEED2',
       'orange-2':'#FEDF9E',
       'orange-3':'#FFB347',
-      'orange-4':'FF971A'
+      'orange-4':'#FF971A'
     },
   },
 };
