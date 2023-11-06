@@ -30,10 +30,10 @@ const LoginPage = () => {
         const userToken = result.user.uid;
         console.log(result);
         window.alert('Login successful!');
+        
         // Store the token in local storage
         localStorage.setItem('userToken', userToken);
-        window.alert('Login successful!');
-  
+
         // Redirect to the dashboard/home route
         navigate('/dashboard/home');
         // Registration successful, you can add any further logic here
