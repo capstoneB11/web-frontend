@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import loader from "../../assets/loading-anim.json";
+import loader from "../../assets/loading-chicken-2.json";
 import { useLocation } from "../../hooks/useLocation";
 import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
