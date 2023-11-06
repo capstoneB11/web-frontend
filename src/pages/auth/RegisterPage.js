@@ -3,9 +3,13 @@ import Form from "../../components/auth/Form";
 import RegisterImage from "../../assets/welcome-image-2.webp";
 import signUp from "../../lib/firebase/signUp";
 import Spinner from "../../utils/Spinner";
+import { useNavigate } from "react-router-dom";
 const LazyImage = lazy(() => import("../../utils/LazyImage"));
 
 const RegisterPage = () => {
+
+  const navigate = useNavigate();
+
   const handleRegisterSubmit = async (e, email, password, passwordConfirm) => {
     e.preventDefault();
 
@@ -20,7 +24,9 @@ const RegisterPage = () => {
       window.alert(`something went wrong : ${error}`);
     } else {
       console.log(result);
-      window.alert("Registration successful!");
+      window.alert("Registrasi Berhasil!");
+
+      navigate('/login');
       // Registration successful, you can add any further logic here
     }
   };
