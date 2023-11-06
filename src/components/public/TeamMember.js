@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from "react";
-import Spinner from "../../utils/Spinner";
 const LazyImage = lazy(() => import("../../utils/LazyImage"));
 
 const StepsItem = ({ imageItem, textTitle, textBody }) => {
@@ -9,7 +8,7 @@ const StepsItem = ({ imageItem, textTitle, textBody }) => {
         <img
           src={imageItem}
           alt="Image"
-          className="w-auto h-32 sm:h-48 m-2 sm:mb-6 hover:scale-125 transition-transform duration-300"
+          className="w-auto h-32 sm:h-48 m-2 sm:mb-6 hover:scale-110 transition-transform duration-300"
         />
       </div>
       <div className="relative">
