@@ -1,11 +1,10 @@
 // useImageCarousel.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export function useImageCarousel(userToken, withFrame) {
   const [imageCarouselData, setImageCarouselData] = useState([]);
 
   useEffect(() => {
-
     const URL = withFrame
       ? `https://www.chickcount.tech/api/getCount?uname=${userToken}`
       : `https://www.chickcount.tech/api/getImage?uname=${userToken}`;
@@ -22,9 +21,8 @@ export function useImageCarousel(userToken, withFrame) {
           console.error('No "data" property in the JSON response');
         }
       })
-      .catch((error) => console.error('Error fetching images:', error));
+      .catch((error) => console.error("Error fetching images:", error));
   }, [userToken, withFrame]);
 
   return imageCarouselData;
 }
-

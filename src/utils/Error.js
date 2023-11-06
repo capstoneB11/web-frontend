@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../assets/png/logo-new.png'
+import * as React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../assets/png/logo-new.png";
 
 export default function Error() {
   return (
@@ -8,8 +8,12 @@ export default function Error() {
       <div className="grid justify-items-center py-10">
         <img className="w-auto h-auto" src={Logo} alt="Logo"></img>
 
-        <p className="text-center text-5xl font-bold p-2 text-black">Error 404</p>
-        <p className="text-center text-3xl font-bold text-black/75">Halaman ini Tidak Ada 🥺 </p>
+        <p className="text-center text-5xl font-bold p-2 text-black">
+          Error 404
+        </p>
+        <p className="text-center text-3xl font-bold text-black/75">
+          Halaman ini Tidak Ada 🥺{" "}
+        </p>
 
         <div className="px-5">
           <Link

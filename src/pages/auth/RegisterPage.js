@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const LazyImage = lazy(() => import("../../utils/LazyImage"));
 
 const RegisterPage = () => {
-
   const navigate = useNavigate();
 
   const handleRegisterSubmit = async (e, email, password, passwordConfirm) => {
@@ -26,7 +25,7 @@ const RegisterPage = () => {
       console.log(result);
       window.alert("Registrasi Berhasil!");
 
-      navigate('/login');
+      navigate("/login");
       // Registration successful, you can add any further logic here
     }
   };
