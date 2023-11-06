@@ -47,7 +47,7 @@ const HomePage = () => {
 
     content = (
       <div className="flex h-screen items-center justify-center">
-        <Loader loaderOptions={loaderOptions} />;
+        <Loader loaderOptions={loaderOptions} />
       </div>
     );
   } else {

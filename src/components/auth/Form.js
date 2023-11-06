@@ -1,30 +1,37 @@
 // Form.js (Reusable Form Component)
-import { faL } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => {
-
-  const [email, setEmail] = useState('');
-  const [validEmail, setValidEmail] = useState(false)
-  const [password, setPassword] = useState('');
-  const [validPassword, setValidPassword] = useState(false)
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+const Form = ({
+  title,
+  buttonText,
+  showPasswordConfirm,
+  isLogin,
+  onSubmit,
+}) => {
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [password, setPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   function handlePasswordChange(password) {
     const passwordInput = document.getElementById("password");
-    const validationMessage = document.getElementById("password-validation-msg");
+    const validationMessage = document.getElementById(
+      "password-validation-msg"
+    );
     const passwordPattern = /^[\S]{8,}$/;
-  
+
     if (passwordPattern.test(password)) {
       passwordInput.classList.remove("border-red-500");
       validationMessage.textContent = "";
       setPassword(password); // Set the email only when it's valid
-      setValidPassword(true)
+      setValidPassword(true);
     } else {
       passwordInput.classList.add("border-red-500");
       validationMessage.textContent = "Password Too short!";
-      setValidPassword(false)
+      setValidPassword(false);
     }
   }
 
@@ -32,25 +39,27 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
     const emailInput = document.getElementById("email");
     const validationMessage = document.getElementById("email-validation-msg");
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i; // Basic email pattern
-  
+
     if (emailPattern.test(email)) {
       emailInput.classList.remove("border-red-500");
       validationMessage.textContent = "";
       setEmail(email); // Set the email only when it's valid
-      setValidEmail(true)
+      setValidEmail(true);
     } else {
       emailInput.classList.add("border-red-500");
       validationMessage.textContent = "Invalid email address!";
-      setValidEmail(false)
+      setValidEmail(false);
     }
   }
 
   return (
     <div className="w-full lg:w-1/2 flex bg-white items-center justify-center lg:justify-center h-screen">
       <div className="mx-6 w-full md:w-3/5 p-8 bg-white rounded-lg shadow-2xl text-left">
-        <h1 className="lg:text-4xl text-3xl font-bold text-gray-800 mb-4">{title}</h1>
+        <h1 className="lg:text-4xl text-3xl font-bold text-gray-800 mb-4">
+          {title}
+        </h1>
         <p className="text-gray-600 mb-6">
-          {isLogin ? "Please enter your details" : "Create your account."}
+          {isLogin ? "Please enter your details" : "Please enter your details"}
         </p>
 
         <form onSubmit={(e) => onSubmit(e, email, password, passwordConfirm)}>
@@ -59,7 +68,8 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
               Email
             </label>
             <input
-              required type="email"
+              required
+              type="email"
               id="email"
               name="email"
               placeholder="chickount@mail.com"
@@ -73,7 +83,8 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
               Password
             </label>
             <input
-              required type="password"
+              required
+              type="password"
               id="password"
               name="password"
               className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
@@ -98,10 +109,11 @@ const Form = ({ title, buttonText, showPasswordConfirm, isLogin, onSubmit }) => 
           )}
 
           <p className="text-gray-600 mb-4">
-            {isLogin
-              ? "Don't have an account? "
-              : "Already have an account? "}
-            <Link to={isLogin ? '/register' : '/login'} className="text-blue-400 hover:text-blue-600">
+            {isLogin ? "Don't have an account? " : "Already have an account? "}
+            <Link
+              to={isLogin ? "/register" : "/login"}
+              className="text-blue-400 hover:text-blue-600"
+            >
               {isLogin ? "Register here" : "Sign in here"}
             </Link>
           </p>
