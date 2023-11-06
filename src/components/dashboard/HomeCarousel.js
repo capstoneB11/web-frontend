@@ -3,13 +3,34 @@ import ReactSwitch from "react-switch";
 import { formatDate } from '../../utils/formatDate';
 import { Carousel } from 'react-responsive-carousel';
 
-const HomeCarousel = ({ imageCarouselData }) => {
+const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
 
     const [selectedImage, setSelectedImage] = useState(0);
 
+    const toggleFrame = () => {
+        setWithFrame(!withFrame); // Toggle the state of withFrame when the switch button is clicked
+      };
 
   return (
     <div>
+        <label className="flex items-center space-x-2 cursor-pointer">
+            <ReactSwitch
+                onChange={toggleFrame}
+                checked={withFrame}
+                onColor="#86d3ff"
+                onHandleColor="#2693e6"
+                handleDiameter={30}
+                uncheckedIcon={false}
+                checkedIcon={false}
+            />
+            <span
+                className={`text-sm font-medium ${
+                withFrame ? "text-indigo-600" : "text-gray-600"
+                }`}
+            >
+                Tunjukkan Frame
+            </span>
+        </label>
         <Carousel
             showThumbs={false}
             selectedItem={selectedImage}
