@@ -8,6 +8,7 @@ import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
 import Loader from "../../utils/Loader";
 import HomeCarousel from "../../components/dashboard/HomeCarousel";
+import ReactSwitch from "react-switch";
 
 const HomePage = () => {
   let content;
@@ -25,6 +26,10 @@ const HomePage = () => {
     dateStyle: "full",
     timeStyle: "long",
   }).format(date);
+
+  const toggleFrame = () => {
+    setWithFrame(!withFrame); // Toggle the state of withFrame when the switch button is clicked
+  };
 
   const loaderOptions = {
     loop: true,
@@ -115,12 +120,6 @@ const HomePage = () => {
 
                   <HomeCarousel imageCarouselData={imageCarouselData} />
                 </div>
-                  <HomeCarousel
-                    imageCarouselData={imageCarouselData}
-                    withFrame={withFrame}
-                    setWithFrame={setWithFrame}
-                  />
-              </div>
               )}
             </div>
           </div>
