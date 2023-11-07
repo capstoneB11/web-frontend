@@ -12,16 +12,15 @@ const PublicHeader = () => {
 
   const handleLogout = () => {
     const confirmLogout = window.confirm("EMANG BOLEH ? 🥺🥺🥺🥺🥺🥺🥺🥺🥺");
-    
+
     if (confirmLogout) {
       // Clear the userToken from local storage
       localStorage.removeItem("userToken");
-      
+
       // Navigate to the "/" page
       window.location.href = "/";
     }
   };
-  
 
   const menuItems = [
     {
@@ -70,10 +69,10 @@ const PublicHeader = () => {
           </a>
         </div>
         <div className="hidden px-4 lg:flex space-x-4">
-        {menuItems.map(
-          (menuItem) =>
-            menuItem.shouldDisplay && (
-              menuItem.label !== "Logout" ? (
+          {menuItems.map(
+            (menuItem) =>
+              menuItem.shouldDisplay &&
+              (menuItem.label !== "Logout" ? (
                 <a
                   key={menuItem.label}
                   href={menuItem.path}
@@ -89,9 +88,8 @@ const PublicHeader = () => {
                 >
                   {menuItem.label}
                 </button>
-              )
-            )
-        )}
+              ))
+          )}
         </div>
         <div className="lg:hidden flex items-center">
           {isMenuOpen ? (
@@ -114,9 +112,9 @@ const PublicHeader = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white p-4 space-y-4 flex flex-col">
           {menuItems.map(
-          (menuItem) =>
-            menuItem.shouldDisplay && (
-              menuItem.label !== "Logout" ? (
+            (menuItem) =>
+              menuItem.shouldDisplay &&
+              (menuItem.label !== "Logout" ? (
                 <a
                   key={menuItem.label}
                   href={menuItem.path}
@@ -132,9 +130,8 @@ const PublicHeader = () => {
                 >
                   {menuItem.label}
                 </button>
-              )
-            )
-        )}
+              ))
+          )}
         </div>
       )}
     </header>

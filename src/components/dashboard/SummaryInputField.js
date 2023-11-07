@@ -1,6 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const SummaryInputField = ({ label, type, id, name, placeholder,value, handleInputChange }) => {
+const SummaryInputField = ({
+  label,
+  type,
+  id,
+  name,
+  placeholder,
+  value,
+  handleInputChange,
+}) => {
   const handleChange = (e) => {
     handleInputChange(e.target.value);
   };

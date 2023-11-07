@@ -3,6 +3,7 @@ import PublicBanner from "../components/public/PublicBanner";
 import PublicBody from "../components/public/PublicBody";
 import Steps from "../components/public/Steps";
 import PublicBody2 from "../components/public/PublicBody2";
+import Footer from "../components/public/Footer";
 
 const Public = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -36,6 +37,7 @@ const Public = () => {
       <PublicBody />
       <Steps />
       <PublicBody2 />
+      <Footer />
     </div>
   );
 };

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Reminder = () => {
-  return (
-    <div>You're not logged in Bro</div>
-  )
-}
+  return <div>You're not logged in Bro</div>;
+};
 
-export default Reminder
+export default Reminder;

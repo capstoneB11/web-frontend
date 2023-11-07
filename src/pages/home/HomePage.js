@@ -27,7 +27,6 @@ const HomePage = () => {
     timeStyle: "long",
   }).format(date);
 
-
   const loaderOptions = {
     loop: true,
     autoplay: true,
@@ -96,10 +95,11 @@ const HomePage = () => {
                 <p>Belum Ada Data Foto</p>
               ) : (
                 <div>
-                  <HomeCarousel 
+                  <HomeCarousel
                     imageCarouselData={imageCarouselData}
                     withFrame={withFrame}
-                    setWithFrame={setWithFrame} />
+                    setWithFrame={setWithFrame}
+                  />
                 </div>
               )}
             </div>
