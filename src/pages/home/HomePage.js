@@ -8,15 +8,14 @@ import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
 import Loader from "../../utils/Loader";
 import HomeCarousel from "../../components/dashboard/HomeCarousel";
-import ReactSwitch from "react-switch";
+import useUserToken from "../../hooks/useUserToken";
 
 const HomePage = () => {
   let content;
 
-  const userToken = localStorage.getItem("userToken").toString();
-
   const [withFrame, setWithFrame] = useState(false);
 
+  const userToken = useUserToken();
   const imageCarouselData = useImageCarousel(userToken, withFrame);
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);

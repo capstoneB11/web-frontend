@@ -8,15 +8,17 @@ import {
   Legend,
 } from "chart.js";
 
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useNavigate } from "react-router-dom";
+import useUserToken from "../../hooks/useUserToken";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TrackerPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const userToken = useUserToken();
 
   // Function to generate random data for the chart
   const generateRandomData = (days) => {

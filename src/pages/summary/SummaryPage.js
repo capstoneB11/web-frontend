@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faCoins } from "@fortawesome/free-solid-svg-icons";
 import SummaryInputField from "../../components/dashboard/SummaryInputField";
+import useUserToken from "../../hooks/useUserToken";
 
 const SummaryPage = () => {
   const [price, setPrice] = useState(0); // State for Price input
@@ -10,6 +11,8 @@ const SummaryPage = () => {
   const [chickenCount, setChickenCount] = useState(0); // State for Chicken Count input
 
   const [result, setResult] = useState(0);
+
+  const userToken = useUserToken();
 
   const generateRandomNumber = () => {
     const randomCount = Math.floor(Math.random() * 100); // Generates a random number between 0 and 100 (change as needed)
