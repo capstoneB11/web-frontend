@@ -9,6 +9,11 @@ import { useWeatherData } from "../../hooks/useWeatherData";
 import Loader from "../../utils/Loader";
 import HomeCarousel from "../../components/dashboard/HomeCarousel";
 import useUserToken from "../../hooks/useUserToken";
+import { useChickenCount } from "../../hooks/useChickenCount";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HomePage = () => {
   let content;
@@ -16,12 +21,22 @@ const HomePage = () => {
   const [withFrame, setWithFrame] = useState(false);
 
   const userToken = useUserToken();
+
   const imageCarouselData = useImageCarousel(userToken, withFrame);
+  const chickenCount = useChickenCount(userToken);
+
+  const latestCountIndex = chickenCount.length - 1; // Last index
+
+  const latestCount = chickenCount[latestCountIndex]; // Value at the last index
+  const firstCount = chickenCount[0];
+
+  const deadChickenCount = firstCount - latestCount;
+
   const userLocation = useLocation();
   const weatherData = useWeatherData(userLocation);
 
   const date = new Date();
-  const today = new Intl.DateTimeFormat("en-US", {
+  const today = new Intl.DateTimeFormat("id-ID", {
     dateStyle: "full",
     timeStyle: "long",
   }).format(date);
@@ -35,6 +50,19 @@ const HomePage = () => {
     },
   };
 
+  const data = {
+    labels: ["Ayam Mati", "Ayam Hidup"],
+    datasets: [
+      {
+        label: "Jumlah",
+        data: [firstCount, firstCount], //Replace first index with deadChickenCount
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   if (weatherData === null) {
     console.log(`USER TOKEN : ${userToken}`);
 
@@ -45,51 +73,23 @@ const HomePage = () => {
     );
   } else {
     content = (
-      <div className="p-6 sm:p-10 bg-gradient-to-b from-gradient-1 to-gradient-2">
+      <div className="p-6 sm:p-10">
         <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
           Hello, Peternak Yazid! 🧑🏻‍🌾
         </h1>
+        <p className="text-sm text-white italic text-start">
+          {today}, {weatherData.location.name}, {weatherData.location.region}
+        </p>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
-            <div className="flex flex-col bg-white p-10 h-full rounded-2xl shadow-2xl justify-between">
+            <div className="flex flex-col bg-white p-12 h-full rounded-2xl shadow-2xl justify-between">
               <h2 className="text-2xl font-semibold text-center">
                 Hasil Prediksi
               </h2>
-              <p className="text-sm italic text-center">
-                {today}, {weatherData.location.name},{" "}
-                {weatherData.location.region}
-              </p>
-              <div className="flex items-center justify-center mt-2">
-                <img
-                  src={weatherData.current.condition.icon}
-                  alt="Icon"
-                  className="w-10 h-10"
-                />
-                <div className="ml-2 mt-4 text-xl">
-                  <p>Weather: {weatherData.current.condition.text}</p>
-                  <p>Temperature: {weatherData.current.temp_c}°C</p>
-                </div>
-              </div>
-              <div className="mt-4 flex flex-col items-center justify-center">
-                <div style={{ width: 225, height: 225 }}>
-                  <CircularProgressbar
-                    value={95}
-                    text={`${95}%`}
-                    styles={buildStyles({
-                      textSize: "36px",
-                      textColor: "black",
-                    })}
-                    className="scale-75 md:scale-100"
-                  />
-                </div>
-                <p className="sm:mt-2 ">Persentase Jumlah Ayam</p>
-              </div>
-              <ul className="mt-4 text-center">
-                <li>Ayam hidup: {275}</li>
-                <li>Ayam mati: {25}</li>
-              </ul>
+              <Doughnut data={data} className="mt-8 scale-75 md:scale-100" />
             </div>
           </div>
+
           <div className="w-full lg:w-1/2">
             <div className="bg-white p-10 h-full rounded-2xl shadow-2xl flex flex-col justify-between">
               <h2 className="text-2xl font-semibold text-center">

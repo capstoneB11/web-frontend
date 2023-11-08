@@ -3,7 +3,7 @@ import PublicHeader from "./public/PublicHeader";
 
 const Layouts = () => {
   return (
-    <div>
+    <div className="bg-gradient-to-b from-gradient-1 to-gradient-2">
       {/* Sticky Header */}
       <PublicHeader />
       <Outlet />

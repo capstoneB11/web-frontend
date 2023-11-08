@@ -47,10 +47,10 @@ const SummaryPage = () => {
 
   return (
     <div className="p-6 sm:p-10">
-      <h1 className="text-3xl sm:text-4xl font-bold">Summary</h1>
+      <h1 className="text-white text-3xl sm:text-4xl font-bold">Summary</h1>
       <div className="flex flex-col lg:flex-row mt-4">
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0 lg:pr-4">
-          <div className="bg-gray-200 p-4 rounded-lg shadow flex flex-col items-center justify-center h-full">
+          <div className="bg-white p-4 rounded-2xl shadow-2xl flex flex-col items-center justify-center h-full">
             <h2 className="text-xl sm:text-2xl font-bold mb-4">
               Estimasi Pakan Ayam
             </h2>
@@ -83,7 +83,7 @@ const SummaryPage = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
-          <div className="bg-gray-200 p-4 rounded-lg shadow flex flex-col items-center justify-center h-full">
+          <div className="bg-white p-4 rounded-2xl shadow-2xl flex flex-col items-center justify-center h-full">
             <h2 className="text-xl sm:text-2xl font-bold mb-4">
               Estimasi Hasil Panel
             </h2>
