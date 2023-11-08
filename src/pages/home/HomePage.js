@@ -45,13 +45,17 @@ const HomePage = () => {
     );
   } else {
     content = (
-      <div className="p-6 sm:p-10">
-        <h1 className="text-3xl sm:text-4xl font-bold">Hello Yazid!</h1>
+      <div className="p-6 sm:p-10 bg-gradient-to-b from-gradient-1 to-gradient-2">
+        <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
+          Hello, Peternak Yazid! 🧑🏻‍🌾
+        </h1>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
-            <div className="bg-gray-200 p-4 h-full rounded-lg shadow">
-              <h2 className="text-2xl font-bold">Hasil Prediksi</h2>
-              <p className="text-sm italic">
+            <div className="flex flex-col bg-white p-10 h-full rounded-2xl shadow-2xl justify-between">
+              <h2 className="text-2xl font-semibold text-center">
+                Hasil Prediksi
+              </h2>
+              <p className="text-sm italic text-center">
                 {today}, {weatherData.location.name},{" "}
                 {weatherData.location.region}
               </p>
@@ -80,15 +84,17 @@ const HomePage = () => {
                 </div>
                 <p className="sm:mt-2 ">Persentase Jumlah Ayam</p>
               </div>
-              <ul className="mt-4">
+              <ul className="mt-4 text-center">
                 <li>Ayam hidup: {275}</li>
                 <li>Ayam mati: {25}</li>
               </ul>
             </div>
           </div>
           <div className="w-full lg:w-1/2">
-            <div className="bg-gray-200 p-4 h-full rounded-md shadow">
-              <h2 className="text-2xl font-bold">Foto Kandang</h2>
+            <div className="bg-white p-10 h-full rounded-2xl shadow-2xl flex flex-col justify-between">
+              <h2 className="text-2xl font-semibold text-center">
+                Foto Kandang
+              </h2>
 
               {imageCarouselData.length === 0 ? (
                 <p>Belum Ada Data Foto</p>
