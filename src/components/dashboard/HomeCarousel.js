@@ -12,24 +12,6 @@ const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
 
   return (
     <div>
-      <label className="flex items-center space-x-2 cursor-pointer">
-        <ReactSwitch
-          onChange={toggleFrame}
-          checked={withFrame}
-          onColor="#86d3ff"
-          onHandleColor="#2693e6"
-          handleDiameter={30}
-          uncheckedIcon={false}
-          checkedIcon={false}
-        />
-        <span
-          className={`text-sm font-medium ${
-            withFrame ? "text-indigo-600" : "text-gray-600"
-          }`}
-        >
-          Tunjukkan Frame
-        </span>
-      </label>
       <Carousel
         showThumbs={false}
         selectedItem={selectedImage}
@@ -37,7 +19,7 @@ const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
       >
         {imageCarouselData.map((image, index) => (
           <div className="max-h-screen" key={index}>
-            <div className="w-full h-screen flex items-center justify center">
+            <div className="w-full my-8 flex items-center justify center">
               <img
                 src={`${image.image}`}
                 alt={`Image ${index}`}
@@ -48,11 +30,31 @@ const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
           </div>
         ))}
       </Carousel>
-      <p>
+      <p className="mb-2">
         {`Gambar Diambil Pada: ${formatDate(
           imageCarouselData[selectedImage].timestamp
         )}`}
       </p>
+      <label className="flex items-center space-x-2 cursor-pointer">
+        <ReactSwitch
+          onChange={toggleFrame}
+          checked={withFrame}
+          offHandleColor="#8F8F8F"
+          offColor="#D9D9D9"
+          onColor="#FEDF9E"
+          onHandleColor="#FF971A"
+          handleDiameter={30}
+          uncheckedIcon={false}
+          checkedIcon={false}
+        />
+        <span
+          className={`text-sm font-medium ${
+            withFrame ? "text-orange-4" : "text-gray-600"
+          }`}
+        >
+          Tunjukkan Frame
+        </span>
+      </label>
     </div>
   );
 };

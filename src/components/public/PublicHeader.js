@@ -126,7 +126,7 @@ const PublicHeader = () => {
                 <button
                   key={menuItem.label}
                   onClick={() => handleLogout()} // Define handleLogout function
-                  className="font-medium text-orange-500 hover:text-orange-300 px-4 focus:text-black text-bold-2"
+                  className="font-medium text-orange-500 hover:text-orange-300 px-4 focus:text-black text-bold-2 text-left"
                 >
                   {menuItem.label}
                 </button>
