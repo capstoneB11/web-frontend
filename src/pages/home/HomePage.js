@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import loader from "../../assets/loading-chicken-2.json";
 import { useLocation } from "../../hooks/useLocation";
 import { useImageCarousel } from "../../hooks/useImageCarousel";
 import { useWeatherData } from "../../hooks/useWeatherData";
@@ -23,14 +21,17 @@ const HomePage = () => {
 
   const userToken = useUserToken();
 
-  const imageCarouselData = useImageCarousel(userToken, withFrame);
-  const chickenCount = useChickenCount(userToken);
+  const { imageCarouselData, imageLoading } = useImageCarousel(
+    userToken,
+    withFrame
+  );
+  const { chickenCount, countLoading } = useChickenCount(userToken);
 
-  const latestCountIndex = chickenCount.length - 1; // Last index
+  // Get the latest count and the count at the first timestamp
+  const latestCount = chickenCount[chickenCount.length - 1]?.count || 0; // Latest count value
+  const firstCount = chickenCount[0]?.count || 0; // Count value at the first timestamp
 
-  const latestCount = chickenCount[latestCountIndex]; // Value at the last index
-  const firstCount = chickenCount[0];
-
+  // Calculating the difference in counts
   const deadChickenCount = firstCount - latestCount;
 
   const userLocation = useLocation();
@@ -42,21 +43,12 @@ const HomePage = () => {
     timeStyle: "long",
   }).format(date);
 
-  const loaderOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loader,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid meet",
-    },
-  };
-
   const data = {
     labels: ["Ayam Mati", "Ayam Hidup"],
     datasets: [
       {
         label: "Jumlah",
-        data: [firstCount, firstCount], //Replace first index with deadChickenCount
+        data: [deadChickenCount, latestCount], //Replace first index with deadChickenCount
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
         borderWidth: 1,
@@ -64,12 +56,12 @@ const HomePage = () => {
     ],
   };
 
-  if (weatherData === null) {
+  if (weatherData === null || countLoading === true || imageLoading === true) {
     console.log(`USER TOKEN : ${userToken}`);
 
     content = (
       <div className="flex h-screen items-center justify-center">
-        <Loader loaderOptions={loaderOptions} />
+        <Loader />
       </div>
     );
   } else {
