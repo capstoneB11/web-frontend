@@ -41,13 +41,8 @@ const PublicHeader = () => {
       shouldDisplay: location.pathname.startsWith("/dashboard"),
     },
     {
-      label: "Tracker",
-      path: "/dashboard/tracker",
-      shouldDisplay: location.pathname.startsWith("/dashboard"),
-    },
-    {
-      label: "Summary",
-      path: "/dashboard/summary",
+      label: "Statistics",
+      path: "/dashboard/stats",
       shouldDisplay: location.pathname.startsWith("/dashboard"),
     },
     {
