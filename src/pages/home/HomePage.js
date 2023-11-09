@@ -12,6 +12,7 @@ import useUserToken from "../../hooks/useUserToken";
 import { useChickenCount } from "../../hooks/useChickenCount";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import Card from "../../components/dashboard/Card";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -82,16 +83,16 @@ const HomePage = () => {
         </p>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
-            <div className="flex flex-col bg-white p-12 h-full rounded-2xl shadow-2xl justify-between">
+            <Card className="flex flex-col p-12 h-full justify-between">
               <h2 className="text-2xl font-semibold text-center">
                 Hasil Prediksi
               </h2>
               <Doughnut data={data} className="mt-8 scale-75 md:scale-100" />
-            </div>
+            </Card>
           </div>
 
           <div className="w-full lg:w-1/2">
-            <div className="bg-white p-10 h-full rounded-2xl shadow-2xl flex flex-col justify-between">
+            <Card className="p-10 h-full flex flex-col justify-between">
               <h2 className="text-2xl font-semibold text-center">
                 Foto Kandang
               </h2>
@@ -107,7 +108,7 @@ const HomePage = () => {
                   />
                 </div>
               )}
-            </div>
+            </Card>
           </div>
         </div>
       </div>
