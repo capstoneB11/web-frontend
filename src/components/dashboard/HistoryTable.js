@@ -30,7 +30,7 @@ const HistoryTable = ({ selectedDate, chickenCount }) => {
           {filteredData.map((data, index) => (
             <TableRow key={index}>
               <TableCell align="center" component="th" scope="row">
-                {format(new Date(data.timestamp), "dd MMMM yyyy", {
+                {format(new Date(data.timestamp), "dd MMMM yyyy, HH:mm:ss", {
                   locale: id,
                 })}
               </TableCell>

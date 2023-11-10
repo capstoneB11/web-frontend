@@ -6,6 +6,7 @@ class Image {
     this.image = data.image;
     this.timestamp = new Date(data.timestamp);
     this.part = data.part;
+    this.cam_part = data.cam_part;
     this.idRef = data.idRef;
   }
 }
