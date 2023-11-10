@@ -56,7 +56,7 @@ const HomePage = () => {
     ],
   };
 
-  if (weatherData === null || countLoading === true || imageLoading === true) {
+  if (weatherData === null || countLoading === true) {
     console.log(`USER TOKEN : ${userToken}`);
 
     content = (
