@@ -29,6 +29,7 @@ const useImagePrediction = (modelEndpoint) => {
         method: "POST",
         headers: headers,
         body: formData,
+        data: data,
       });
 
       const result = await response.json();
