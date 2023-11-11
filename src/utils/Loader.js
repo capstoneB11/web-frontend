@@ -13,7 +13,7 @@ const Loader = () => {
   };
 
   return (
-    <div className="loading-container items-center justify-center">
+    <div className="loading-container items-center justify-center scale-125">
       <Lottie options={loaderOptions} height={200} width={200} />
     </div>
   );

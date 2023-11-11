@@ -35,7 +35,7 @@ const Dropzone = () => {
           <img
             src={selectedImage}
             alt="Preview"
-            className="max-w-full max-h-64"
+            className="max-w-full max-h-64 lg:max-h-full"
           />
           <button
             onClick={() => uploadAndPredict(selectedImage)}

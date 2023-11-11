@@ -66,20 +66,21 @@ const HomePage = () => {
     );
   } else {
     content = (
-      <div className="p-6 sm:p-10">
+      <div className="p-6 sm:px-10 sm:py-4">
         <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
           Hello, Peternak Yazid! 🧑🏻‍🌾
         </h1>
         <p className="text-sm text-white italic text-start">
           {today}, {weatherData.location.name}, {weatherData.location.region}
         </p>
+        <h1 className="mt-10 mb-4 text-4xl font-bold text-white">Dashboard </h1>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
             <Card className="flex flex-col p-12 h-full justify-between">
               <h2 className="text-2xl font-semibold text-center">
                 Hasil Prediksi
               </h2>
-              <Doughnut data={data} className="mt-8 scale-75 md:scale-100" />
+              <Doughnut data={data} className="mt-8 scale-100 md:scale-75" />
             </Card>
           </div>
 

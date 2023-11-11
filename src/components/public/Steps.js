@@ -8,10 +8,10 @@ import image4 from "../../assets/step4.png";
 const Steps = () => {
   return (
     <div className="p-8 lg:px-8 lg:py-20 bg-orange-2">
-      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-20 hover:scale-110 transition-transform duration-300">
+      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-10">
         Bagaimana Chicken Counter bekerja?
       </h2>
-      <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 py-4 md:px-40 lg:justify-start">
+      <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 py-4 lg:justify-start">
         <StepsItem
           imageItem={image1}
           textTitle={"Pasang ESP32-CAM"}
