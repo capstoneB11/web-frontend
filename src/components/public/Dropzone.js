@@ -6,7 +6,7 @@ import useImagePrediction from "../../hooks/useImagePrediction";
 const Dropzone = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { prediction, loading, error, uploadAndPredict } = useImagePrediction(
-    "https://api.ultralytics.com/v1/predict/ipyo4cywDcA7LgB4Zy1n"
+    "https://capstone-c501.as.r.appspot.com/demo"
   );
 
   const handleFileChange = (event) => {
@@ -28,9 +28,25 @@ const Dropzone = () => {
     // No need to reset prediction, loading, and error as they are managed by the hook
   };
 
+  const handlePredictClick = () => {
+    // Check if an image is selected before making the prediction
+    if (selectedImage) {
+      // Convert the base64 image to a regular data URL
+      const imageDataUrl = selectedImage.split(",")[1];
+      uploadAndPredict(imageDataUrl);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center flex-col">
-      {selectedImage ? (
+      {loading && (
+        <div className="flex items-center flex-col">
+          <Spinner />
+          <h1>Model sedang Bekerja... 🐔 </h1>
+        </div>
+      )}
+
+      {selectedImage && !loading && !prediction && (
         <div>
           <img
             src={selectedImage}
@@ -38,19 +54,35 @@ const Dropzone = () => {
             className="max-w-full max-h-64"
           />
           <button
-            onClick={() => uploadAndPredict(selectedImage)}
+            onClick={handlePredictClick}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-400 mt-4"
           >
-            Predict Image
+            Lakukan Prediksi
           </button>
           <button
             onClick={resetDropzone}
             className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3 mt-2"
           >
-            Remove Image
+            Hapus Gambar
           </button>
         </div>
-      ) : (
+      )}
+
+      {prediction && (
+        <div className="mt-4">
+          <img
+            src={prediction.image}
+            alt="Predicted Image"
+            className="max-w-full max-h-64"
+          />
+          <h2 className="text-center font-bold text-black">Hasil Prediksi:</h2>
+          <p className="text-center font-bold text-black">
+            Jumlah Ayam terdeteksi: {prediction.count}
+          </p>
+        </div>
+      )}
+
+      {!selectedImage && !loading && !prediction && (
         <label
           htmlFor="dropzone-file"
           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -65,15 +97,7 @@ const Dropzone = () => {
         </label>
       )}
 
-      {loading && <Spinner />}
       {error && <div>Error: {error}</div>}
-
-      {prediction && (
-        <div className="mt-4">
-          <h2>Prediction Results:</h2>
-          <pre>{JSON.stringify(prediction, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 };
