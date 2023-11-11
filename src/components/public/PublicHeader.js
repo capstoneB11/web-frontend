@@ -48,7 +48,7 @@ const PublicHeader = () => {
         location.pathname === "/",
     },
     {
-      label: "Home",
+      label: "Dashboard",
       path: "/dashboard/home",
       shouldDisplay: location.pathname.startsWith("/dashboard"),
     },

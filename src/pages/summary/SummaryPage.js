@@ -47,7 +47,7 @@ const SummaryPage = () => {
   };
 
   return (
-    <div className="p-6 sm:p-10">
+    <div className="p-6 sm:px-10 sm:py-4">
       <h1 className="text-white text-3xl sm:text-4xl font-bold">
         Kalkulasi & Estimasi
       </h1>
@@ -87,7 +87,7 @@ const SummaryPage = () => {
         </div>
 
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
-          <Card className="p-4 flex flex-col items-center justify-center h-full">
+          <Card className="p-4 flex flex-col items-center justify-center h-full p-6 sm:py-10">
             <h2 className="text-xl sm:text-2xl font-bold mb-4">
               Estimasi Hasil Panen
             </h2>
