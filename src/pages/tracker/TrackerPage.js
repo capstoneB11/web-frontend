@@ -96,6 +96,9 @@ const TrackerPage = () => {
   } else {
     content = (
       <div className="p-6 sm:p-10">
+        <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
+          Hello, Peternak Yazid! 🧑🏻‍🌾
+        </h1>
         <h1 className="text-white text-3xl sm:text-4xl font-bold">Statistik</h1>
 
         <div className="w-full mb-4 mt-4">

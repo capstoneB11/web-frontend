@@ -4,17 +4,17 @@ import Dropzone from "./Dropzone";
 
 const Trial = () => {
   return (
-    <div className="flex flex-col lg:flex-row bg-orange-2 items-center justify-center">
-      <div className="w-full lg:h-1/2 p-8 mx-8">
-        <h2 className="sm:text-5xl text-4xl font-bold text-black">
+    <div className="h-screen flex flex-col lg:flex-row bg-orange-5 items-center justify-center">
+      <div className="px-10 lg:px-20 justify-center">
+        <h2 className="sm:text-5xl text-4xl font-bold text-black justify-center">
           Coba Model Machine Learning kami! 🐔
         </h2>
-        <p className="sm:text-xl text-md mt-8 text-black pr-12">
+        <p className="sm:text-xl text-md my-8 text-black">
           Setelah upload, model kami akan mengembalikan jumlah ayam diprediksi
           dalam gambar tersebut.
         </p>
       </div>
-      <div className="w-full p-12 md:p-10 lg:py-48 lg:px-8 mx-8">
+      <div className="w-full justify-center px-10">
         <Dropzone />
       </div>
     </div>

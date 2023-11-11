@@ -1,46 +1,41 @@
 import React from "react";
-import StepsItem from "./StepsItem";
+import TeamMember from "./TeamMember";
 import member1 from "../../assets/member1.png";
-import member2 from "../../assets/member2.png";
-import member3 from "../../assets/member3.png";
-import member4 from "../../assets/member4.png";
-import member5 from "../../assets/member5.png";
+// import member2 from "../../assets/member2.png";
+// import member3 from "../../assets/member3.png";
+// import member4 from "../../assets/member4.png";
+// import member5 from "../../assets/member5.png";
 
-const Steps = () => {
+const Team = () => {
   return (
-    <div className="p-8 lg:px-8 lg:py-20 bg-orange-2">
-      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-20">
-        Bagaimana Chicken Counter bekerja?
+    <div className="p-10 lg:px-8 lg:pt-20 bg-orange-2">
+      <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-10">
+        Introducing Our EGG-cellent Capstone Crew 🐣
       </h2>
-      <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 py-4 md:px-40 lg:justify-start">
-        <StepsItem
-          imageItem={image1}
-          textTitle={"Pasang ESP32-CAM"}
-          textBody={"ESP32-CAM diletakkan di beberapa sudut kandang ayam"}
+      <div className="items-center lg:items-start flex flex-col lg:flex-row bg-orange-2 pt-4 md:px-40 lg:justify-start">
+        <TeamMember
+          imageItem={member1}
+          textTitle={"Yazid"}
           style={{ flex: 1 }}
         />
-        <StepsItem
-          imageItem={image2}
-          textTitle={"Mengambil gambar ayam"}
-          textBody={
-            "Kamera ESP32-CAM akan mengambil gambar-gambar ayam di kandang"
-          }
+        <TeamMember
+          imageItem={member1}
+          textTitle={"Rangga"}
           style={{ flex: 1 }}
         />
-        <StepsItem
-          imageItem={image3}
-          textTitle={"Gambar diproses di cloud"}
-          textBody={
-            "Gambar  dari ESP32-CAM akan diolah menggunakan algoritma Machine Learning"
-          }
+        <TeamMember
+          imageItem={member1}
+          textTitle={"Habib"}
           style={{ flex: 1 }}
         />
-        <StepsItem
-          imageItem={image4}
-          textTitle={"Hasil tampil pada dashboard"}
-          textBody={
-            "Hasil perhitungan ayam menggunakan ML akan ditampilkan di dashboard peternak"
-          }
+        <TeamMember
+          imageItem={member1}
+          textTitle={"Intan"}
+          style={{ flex: 1 }}
+        />
+        <TeamMember
+          imageItem={member1}
+          textTitle={"Mifta"}
           style={{ flex: 1 }}
         />
       </div>
@@ -48,4 +43,4 @@ const Steps = () => {
   );
 };
 
-export default Steps;
+export default Team;
