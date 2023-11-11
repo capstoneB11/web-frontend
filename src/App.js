@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import Layouts from "./components/Layouts";
-import Public from "./pages/Public";
+import Public from "./pages/public/Public";
 import { LoginPage, RegisterPage, HomePage, StatisticPage } from "./pages";
 import Error from "./utils/Error";
+import TrialPage from "./pages/public/TrialPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route index element={<Public />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="trial" element={<TrialPage />} />
 
         <Route path="dashboard">
           <Route index element={<HomePage />} />

@@ -27,13 +27,25 @@ const PublicHeader = () => {
       label: "Homepage",
       path: "/",
       shouldDisplay:
-        location.pathname === "/" || location.pathname === "/login",
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
+    },
+    {
+      label: "Trial",
+      path: "trial",
+      shouldDisplay:
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
     },
     {
       label: "Login",
       path: "login",
       shouldDisplay:
-        location.pathname === "/" || location.pathname === "/about",
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
     },
     {
       label: "Home",
