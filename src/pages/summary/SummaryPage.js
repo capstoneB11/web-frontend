@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faCoins } from "@fortawesome/free-solid-svg-icons";
 import SummaryInputField from "../../components/dashboard/SummaryInputField";
 import useUserToken from "../../hooks/useUserToken";
+import Card from "../../components/dashboard/Card";
 
 const SummaryPage = () => {
   const [price, setPrice] = useState(0); // State for Price input
@@ -47,10 +48,12 @@ const SummaryPage = () => {
 
   return (
     <div className="p-6 sm:p-10">
-      <h1 className="text-white text-3xl sm:text-4xl font-bold">Summary</h1>
+      <h1 className="text-white text-3xl sm:text-4xl font-bold">
+        Kalkulasi & Estimasi
+      </h1>
       <div className="flex flex-col lg:flex-row mt-4">
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0 lg:pr-4">
-          <div className="bg-white p-4 rounded-2xl shadow-2xl flex flex-col items-center justify-center h-full">
+          <Card className="p-4 flex flex-col items-center justify-center h-full">
             <h2 className="text-xl sm:text-2xl font-bold mb-4">
               Estimasi Pakan Ayam
             </h2>
@@ -80,12 +83,13 @@ const SummaryPage = () => {
                 <p>Harga Pakan</p>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
+
         <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
-          <div className="bg-white p-4 rounded-2xl shadow-2xl flex flex-col items-center justify-center h-full">
+          <Card className="p-4 flex flex-col items-center justify-center h-full">
             <h2 className="text-xl sm:text-2xl font-bold mb-4">
-              Estimasi Hasil Panel
+              Estimasi Hasil Panen
             </h2>
             <form className="w-full" onSubmit={(e) => onSubmit(e)}>
               <SummaryInputField
@@ -149,7 +153,7 @@ const SummaryPage = () => {
             </form>
 
             <h1>Total : {result}</h1>
-          </div>
+          </Card>
         </div>
       </div>
     </div>

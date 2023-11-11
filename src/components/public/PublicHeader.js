@@ -27,13 +27,25 @@ const PublicHeader = () => {
       label: "Homepage",
       path: "/",
       shouldDisplay:
-        location.pathname === "/" || location.pathname === "/login",
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
+    },
+    {
+      label: "Trial",
+      path: "trial",
+      shouldDisplay:
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
     },
     {
       label: "Login",
       path: "login",
       shouldDisplay:
-        location.pathname === "/" || location.pathname === "/about",
+        location.pathname === "/login" ||
+        location.pathname === "/trial" ||
+        location.pathname === "/",
     },
     {
       label: "Home",
@@ -41,13 +53,8 @@ const PublicHeader = () => {
       shouldDisplay: location.pathname.startsWith("/dashboard"),
     },
     {
-      label: "Tracker",
-      path: "/dashboard/tracker",
-      shouldDisplay: location.pathname.startsWith("/dashboard"),
-    },
-    {
-      label: "Summary",
-      path: "/dashboard/summary",
+      label: "Statistics",
+      path: "/dashboard/stats",
       shouldDisplay: location.pathname.startsWith("/dashboard"),
     },
     {

@@ -12,6 +12,15 @@ const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
 
   return (
     <div>
+      {withFrame ? (
+        <p className="mb-2 text-center">
+          {`Kamera: ${imageCarouselData[selectedImage].part}`}
+        </p>
+      ) : (
+        <p className="mb-2 text-center">
+          {`Kamera: ${imageCarouselData[selectedImage].cam_part}`}
+        </p>
+      )}
       <Carousel
         showThumbs={false}
         selectedItem={selectedImage}
