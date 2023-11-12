@@ -10,11 +10,11 @@ const PublicBody = () => {
       <div className="flex items-center w-1/3 mx-16 mt-36 bg-orange-3 hidden lg:block">
         <img src={ayamBanyak} alt="Image" />
       </div>{" "}
-      <div className="w-full p-12 md:p-10 lg:py-48 lg:px-2">
-        <h2 className="sm:text-5xl text-4xl font-bold text-white hover:scale-110 transition-transform duration-300">
+      <div className="w-full p-8 md:p-10 lg:py-48 lg:px-24">
+        <h2 className="hover:scale-110 transition-transform duration-300 sm:text-5xl text-3xl font-bold text-white">
           Mengapa kami membuat Chicken Counter?
         </h2>
-        <p className="sm:text-xl text-md mt-8 text-black pr-12">
+        <p className="sm:text-xl text-sm mt-4 sm:mt-8 text-black overflow-hidden">
           Integrasi Machine Learning (ML) dan Internet of Things (IoT) dalam
           Chicken Counter menciptakan solusi terkini dalam manajemen peternakan.
           Dengan memanfaatkan ML, sistem dapat menghitung kebutuhan pangan dan

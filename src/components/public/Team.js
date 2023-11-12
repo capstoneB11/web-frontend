@@ -8,7 +8,7 @@ import member5 from "../../assets/member5.png";
 
 const Team = () => {
   return (
-    <div className="p-10 lg:px-8 lg:pt-20 bg-orange-2">
+    <div className="p-8 sm:p-10 lg:px-8 lg:pt-20 bg-orange-2">
       <h2 className="px-4 text-2xl sm:text-4xl font-bold text-gray-800 text-center sm:mb-10">
         Introducing Our EGG-cellent Capstone Crew 🐣
       </h2>

@@ -21,6 +21,7 @@ const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
           {`Kamera: ${imageCarouselData[selectedImage].cam_part}`}
         </p>
       )}
+
       <Carousel
         showThumbs={false}
         selectedItem={selectedImage}

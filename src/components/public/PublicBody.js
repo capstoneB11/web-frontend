@@ -17,11 +17,11 @@ const PublicBody = () => {
         </Suspense>{" "}
         {/* </div> End of Left */}
       </div>
-      <div className="w-full p-12 md:p-10 lg:py-48 lg:px-24">
-        <h2 className="hover:scale-110 transition-transform duration-300 sm:text-5xl text-4xl font-bold text-white">
+      <div className="w-full p-8 md:p-10 lg:py-48 lg:px-24">
+        <h2 className="hover:scale-110 transition-transform duration-300 sm:text-5xl text-3xl font-bold text-white">
           Apa itu Chicken Counter?
         </h2>
-        <p className="sm:text-xl text-md mt-8 text-black overflow-hidden">
+        <p className="sm:text-xl text-sm mt-4 sm:mt-8 text-black overflow-hidden">
           Chicken Counter adalah sebuah sistem yang dirancang untuk mengautomasi
           proses penghitungan jumlah ayam broiler dalam sebuah kandang. Chicken
           Counter memanfaatkan teknologi IoT dan Machine Learning untuk
