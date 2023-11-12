@@ -15,11 +15,15 @@ const PublicBody = () => {
           Mengapa kami membuat Chicken Counter?
         </h2>
         <p className="sm:text-xl text-md mt-8 text-black pr-12">
-          Chicken Counter adalah sebuah sistem yang dirancang untuk mengautomasi
-          proses penghitungan jumlah ayam broiler dalam sebuah kandang. Chicken
-          Counter memanfaatkan teknologi IoT dan Machine Learning untuk
-          memprediksi jumlah ayam. Hasil perhitungan ditampilkan di sebuah
-          dashboard web.
+          Integrasi Machine Learning (ML) dan Internet of Things (IoT) dalam
+          Chicken Counter menciptakan solusi terkini dalam manajemen peternakan.
+          Dengan memanfaatkan ML, sistem dapat menghitung kebutuhan pangan dan
+          meramalkan keuntungan, sedangkan IoT memungkinkan pengumpulan data
+          secara real-time melalui ESP32-Cam yang terpasang pada setiap kandang
+          ayam. Otomasi yang dihasilkan dari kolaborasi ini memberikan kemudahan
+          dalam mengelola dan menghitung populasi ayam, dengan sistem yang dapat
+          memberikan informasi akurat secara otomatis, meminimalkan intervensi
+          manual, dan meningkatkan efisiensi operasional peternakan.
         </p>
       </div>
       {/*  End of Center Texzt */}
