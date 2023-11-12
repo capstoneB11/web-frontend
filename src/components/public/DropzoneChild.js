@@ -23,7 +23,7 @@ const DropzoneChild = () => {
         Lepaskan
       </p>
       <p class="text-xs text-gray-500 dark:text-gray-400">
-        PNG atau JPG (MAX. 800x400px)
+        PNG atau JPG (Maks. 1MB)
       </p>
     </div>
   );
