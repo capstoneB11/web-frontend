@@ -70,10 +70,10 @@ const Dropzone = () => {
 
       {prediction && (
         <div className="mt-4">
-          <h2 className="text-center font-bold text-black py-4 text-2xl">
+          <h2 className="text-center font-semibold text-black py-4 text-2xl">
             Hasil Prediksi
           </h2>
-          <p className="text-center font-bold text-black mb-4 text-xl">
+          <p className="text-center font-semibold text-black mb-4 text-xl">
             Jumlah Ayam terdeteksi: {prediction.count}
           </p>
           <img
