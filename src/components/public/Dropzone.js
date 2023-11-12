@@ -28,6 +28,10 @@ const Dropzone = () => {
     // No need to reset prediction, loading, and error as they are managed by the hook
   };
 
+  const handleRefreshClick = () => {
+    window.location.reload();
+  };
+
   const handlePredictClick = () => {
     // Check if an image is selected before making the prediction
     if (selectedImage) {
@@ -79,6 +83,12 @@ const Dropzone = () => {
           <p className="text-center font-bold text-black">
             Jumlah Ayam terdeteksi: {prediction.count}
           </p>
+          <button
+            onClick={handleRefreshClick}
+            className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3 mt-2"
+          >
+            Coba Lagi
+          </button>
         </div>
       )}
 
