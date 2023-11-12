@@ -75,7 +75,7 @@ const Dropzone = () => {
             onClick={handlePredictClick}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-400 mt-4"
           >
-            Lakukan Prediksi
+            Prediksi
           </button>
           <button
             onClick={resetDropzone}
@@ -88,15 +88,17 @@ const Dropzone = () => {
 
       {prediction && (
         <div className="mt-4">
+          <h2 className="text-center font-semibold text-black py-4 text-2xl">
+            Hasil Prediksi
+          </h2>
+          <p className="text-center font-semibold text-black mb-4 text-xl">
+            Jumlah Ayam terdeteksi: {prediction.count}
+          </p>
           <img
             src={prediction.image}
             alt="Predicted Image"
-            className="max-w-full max-h-64"
+            className="max-w-full max-h-64 lg:max-h-full"
           />
-          <h2 className="text-center font-bold text-black">Hasil Prediksi:</h2>
-          <p className="text-center font-bold text-black">
-            Jumlah Ayam terdeteksi: {prediction.count}
-          </p>
           <button
             onClick={handleRefreshClick}
             className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3 mt-2"
