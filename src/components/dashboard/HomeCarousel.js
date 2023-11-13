@@ -61,6 +61,7 @@ const HomeCarousel = ({
           </select>
         </label>
       </div>
+      
       <Carousel
         showThumbs={false}
         selectedItem={selectedImage}

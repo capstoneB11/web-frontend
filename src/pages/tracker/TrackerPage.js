@@ -96,18 +96,18 @@ const TrackerPage = () => {
   } else {
     content = (
       <div className="p-6 sm:p-10">
-        <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
+        <h1 className="text-2xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
           Hello, Peternak Yazid! 🧑🏻‍🌾
         </h1>
         <h1 className="text-white text-3xl sm:text-4xl font-bold">Statistik</h1>
 
         <div className="w-full mb-4 mt-4">
           <Card className="p-4 flex flex-col items-center justify-center">
-            <h2 className="text-xl sm:text-2xl font-bold font-bold mb-2 mt-4">
+            <h2 className="text-md sm:text-2xl font-bold font-bold mb-2 sm:mt-4">
               Grafik Jumlah Ayam
             </h2>
             <Bar
-              className="p-16"
+              className="px-4 lg:p-20"
               data={barChartData}
               options={barChartOptions}
             />
@@ -117,7 +117,7 @@ const TrackerPage = () => {
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
             <Card className="p-4 flex flex-col items-center justify-center h-full">
-              <h2 className="text-xl sm:text-2xl font-bold mb-2">
+              <h2 className="text-md sm:text-2xl font-bold mb-2">
                 Pilih Riwayat Prediksi
               </h2>
               <Calendar value={selectedDate} onChange={handleDateChange} />

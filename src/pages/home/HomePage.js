@@ -68,13 +68,15 @@ const HomePage = () => {
   } else {
     content = (
       <div className="p-6 sm:px-10 sm:py-4">
-        <h1 className="text-3xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
+        <h1 className="text-2xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
           Hello, Peternak Yazid! 🧑🏻‍🌾
         </h1>
-        <p className="text-sm text-white italic text-start">
+        <p className="text-xs sm:text-sm text-white italic text-start">
           {today}, {weatherData.location.name}, {weatherData.location.region}
         </p>
-        <h1 className="mt-10 mb-4 text-4xl font-bold text-white">Dashboard </h1>
+        <h1 className="mt-10 mb-4 text-3xl sm:text-4xl font-bold text-white">
+          Dashboard{" "}
+        </h1>
         <div className="flex flex-col lg:flex-row mt-4">
           <div className="w-full lg:w-1/2 lg:pr-4 mb-4 lg:mb-0">
             <Card className="flex flex-col p-12 h-full justify-between">
@@ -87,7 +89,7 @@ const HomePage = () => {
 
           <div className="w-full lg:w-1/2">
             <Card className="p-10 h-full flex flex-col justify-between">
-              <h2 className="text-2xl font-semibold text-center">
+              <h2 className="text-2xl font-semibold text-center mb-4">
                 Foto Kandang
               </h2>
 
