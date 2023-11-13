@@ -11,6 +11,7 @@ import { useChickenCount } from "../../hooks/useChickenCount";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import Card from "../../components/dashboard/Card";
+import Spinner from "../../utils/Spinner";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -92,17 +93,24 @@ const HomePage = () => {
                 Foto Kandang
               </h2>
 
-              {imageCarouselData.length === 0 ? (
-                <p>Belum Ada Data Foto</p>
-              ) : (
+              {imageCarouselData && !imageLoading && (
                 <div>
                   <HomeCarousel
+                    imageLoading={imageLoading}
                     imageCarouselData={imageCarouselData}
                     withFrame={withFrame}
                     setWithFrame={setWithFrame}
                   />
                 </div>
               )}
+
+              {imageLoading && (
+                <div className="item-center">
+                  <Spinner />
+                </div>
+              )}
+
+              {imageCarouselData.length === 0 && <p>Belum Ada Data Foto</p>}
             </Card>
           </div>
         </div>

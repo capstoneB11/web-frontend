@@ -22,7 +22,7 @@ const DropzoneChild = () => {
         <span class="font-semibold">Klik untuk Unggah</span>
       </p>
       <p class="text-xs text-gray-500 dark:text-gray-400 text-center">
-        PNG atau JPG (MAX. 800x400px)
+        PNG atau JPG (Maks. 1MB)
       </p>
     </div>
   );

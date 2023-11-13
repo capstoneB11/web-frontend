@@ -13,19 +13,37 @@ const Dropzone = () => {
     const file = event.target.files[0];
 
     if (file) {
-      const reader = new FileReader();
+      // Check if the file is an image
+      if (file.type.startsWith("image/")) {
+        // Check if the file size is less than or equal to 1 MB (1024 * 1024 bytes)
+        if (file.size <= 1024 * 1024) {
+          const reader = new FileReader();
 
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
+          reader.onloadend = () => {
+            setSelectedImage(reader.result);
+          };
 
-      reader.readAsDataURL(file);
+          reader.readAsDataURL(file);
+        } else {
+          // Show an alert when the file size exceeds 1 MB
+          window.alert("Maaf, ukuran file harus lebih kecil dari 1MB 🥺");
+          // You can also provide additional user feedback or handle the situation as needed.
+        }
+      } else {
+        // Show an alert when the selected file is not an image
+        window.alert("File yang kamu pilih bukan gambar 😰");
+        // You can also provide additional user feedback or handle the situation as needed.
+      }
     }
   };
 
   const resetDropzone = () => {
     setSelectedImage(null);
     // No need to reset prediction, loading, and error as they are managed by the hook
+  };
+
+  const handleRefreshClick = () => {
+    window.location.reload();
   };
 
   const handlePredictClick = () => {
@@ -81,6 +99,12 @@ const Dropzone = () => {
             alt="Predicted Image"
             className="max-w-full max-h-64 lg:max-h-full"
           />
+          <button
+            onClick={handleRefreshClick}
+            className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3 mt-2"
+          >
+            Coba Lagi
+          </button>
         </div>
       )}
 
