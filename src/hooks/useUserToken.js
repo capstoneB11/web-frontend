@@ -15,15 +15,8 @@ const useUserToken = () => {
       setShowAlert(true);
     }
   }, []);
-
-  useEffect(() => {
-    if (showAlert) {
-      window.alert("Oops! Kamu belum login! 🥺🐔");
-      navigate("/login");
-    }
-  }, [showAlert, navigate]);
-
-  return userToken;
+  // Return both userToken and a function to show the modal
+  return { userToken, showAlert };
 };
 
 export default useUserToken;

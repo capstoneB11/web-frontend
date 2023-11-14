@@ -12,6 +12,7 @@ module.exports = {
       "orange-2": "#FEDF9E",
       "orange-3": "#FFB347",
       "orange-4": "#FF971A",
+      "gray-1": "#808080",
       "orange-5": "#FFD15D",
       "gradient-1": "#FFB246",
       "gradient-2": "#FFD15D",

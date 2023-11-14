@@ -30,7 +30,7 @@ const Form = ({
       setValidPassword(true);
     } else {
       passwordInput.classList.add("border-red-500");
-      validationMessage.textContent = "Password Too short!";
+      validationMessage.textContent = "Password Terlalu Pendek";
       setValidPassword(false);
     }
   }
@@ -47,7 +47,7 @@ const Form = ({
       setValidEmail(true);
     } else {
       emailInput.classList.add("border-red-500");
-      validationMessage.textContent = "Invalid email address!";
+      validationMessage.textContent = "Pola Email Tidak Valid!";
       setValidEmail(false);
     }
   }
@@ -59,7 +59,7 @@ const Form = ({
           {title}
         </h1>
         <p className="text-gray-600 mb-6">
-          {isLogin ? "Please enter your details" : "Please enter your details"}
+          {isLogin ? "Masukkan Informasi Anda" : "Masukkan Informasi Anda"}
         </p>
 
         <form onSubmit={(e) => onSubmit(e, email, password, passwordConfirm)}>
@@ -96,7 +96,7 @@ const Form = ({
           {showPasswordConfirm && (
             <div className="mb-6">
               <label htmlFor="passwordConfirm" className="block text-gray-600">
-                Confirm Password
+                Tulis Ulang Password
               </label>
               <input
                 type="password"
@@ -109,18 +109,22 @@ const Form = ({
           )}
 
           <p className="text-gray-600 mb-4">
-            {isLogin ? "Don't have an account? " : "Already have an account? "}
+            {isLogin ? "Belum Punya akun? " : "Sudah Punya Akun? "}
             <Link
               to={isLogin ? "/register" : "/login"}
               className="text-blue-400 hover:text-blue-600"
             >
-              {isLogin ? "Register here" : "Sign in here"}
+              {isLogin ? "Daftar Disini" : "Masuk Disini"}
             </Link>
           </p>
 
           <button
             type="submit"
-            className="w-full bg-orange-4 text-white py-2 px-4 rounded hover:bg-orange-3"
+            className={`w-full py-2 px-4 rounded ${
+              !validEmail || !validPassword
+                ? "bg-gray-1 text-black cursor-not-allowed"
+                : "bg-orange-4 text-white hover:bg-orange-3"
+            }`}
             disabled={!validEmail || !validPassword}
           >
             {buttonText}
