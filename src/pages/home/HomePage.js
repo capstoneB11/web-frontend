@@ -93,24 +93,28 @@ const HomePage = () => {
                 Foto Kandang
               </h2>
 
-              {imageCarouselData && !imageLoading && (
-                <div>
-                  <HomeCarousel
-                    imageLoading={imageLoading}
-                    imageCarouselData={imageCarouselData}
-                    withFrame={withFrame}
-                    setWithFrame={setWithFrame}
-                  />
-                </div>
-              )}
+              <div className="h-full flex justify-center items-center">
+                {imageLoading && (
+                  <div className="item-center">
+                    <Spinner />
+                    <p>Memuat Data Foto...</p>
+                  </div>
+                )}
 
-              {imageLoading && (
-                <div className="item-center">
-                  <Spinner />
-                </div>
-              )}
+                {!imageLoading && imageCarouselData && (
+                  <div>
+                    <HomeCarousel
+                      imageCarouselData={imageCarouselData}
+                      withFrame={withFrame}
+                      setWithFrame={setWithFrame}
+                    />
+                  </div>
+                )}
 
-              {imageCarouselData.length === 0 && <p>Belum Ada Data Foto</p>}
+                {!imageLoading && imageCarouselData.length === 0 && (
+                  <p>Belum Ada Data Foto</p>
+                )}
+              </div>
             </Card>
           </div>
         </div>

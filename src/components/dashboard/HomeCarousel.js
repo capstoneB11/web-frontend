@@ -6,12 +6,7 @@ import Spinner from "../../utils/Spinner";
 
 const LazyImage = lazy(() => import("../../utils/LazyImage"));
 
-const HomeCarousel = ({
-  withFrame,
-  setWithFrame,
-  imageCarouselData,
-  imageLoading,
-}) => {
+const HomeCarousel = ({ withFrame, setWithFrame, imageCarouselData }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedCamera, setSelectedCamera] = useState("01");
   const [filteredData, setFilteredData] = useState([
@@ -61,7 +56,7 @@ const HomeCarousel = ({
           </select>
         </label>
       </div>
-      
+
       <Carousel
         showThumbs={false}
         selectedItem={selectedImage}
