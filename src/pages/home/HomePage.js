@@ -12,15 +12,21 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import Card from "../../components/dashboard/Card";
 import Spinner from "../../utils/Spinner";
+import CustomModal from "../../components/CustomModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HomePage = () => {
   let content;
 
+  const navigate = useNavigate();
+
   const [withFrame, setWithFrame] = useState(false);
 
-  const userToken = useUserToken();
+  const { userToken, showAlert } = useUserToken();
 
   const { imageCarouselData, imageLoading } = useImageCarousel(
     userToken,
@@ -57,7 +63,21 @@ const HomePage = () => {
     ],
   };
 
-  if (weatherData === null || countLoading === true) {
+  if (showAlert) {
+    content = (
+      <CustomModal
+        isOpen={showAlert}
+        onClose={() => {
+          return false;
+        }}
+        acceptText="Oops! Kamu Belum Masuk dengan Akun"
+        icon={<FontAwesomeIcon icon={faWarning} size="2x" color="red" />}
+        onAccept={() => {
+          navigate("/login");
+        }}
+      />
+    );
+  } else if (weatherData === null || countLoading === true) {
     console.log(`USER TOKEN : ${userToken}`);
 
     content = (
@@ -93,24 +113,28 @@ const HomePage = () => {
                 Foto Kandang
               </h2>
 
-              {imageCarouselData && !imageLoading && (
-                <div>
-                  <HomeCarousel
-                    imageLoading={imageLoading}
-                    imageCarouselData={imageCarouselData}
-                    withFrame={withFrame}
-                    setWithFrame={setWithFrame}
-                  />
-                </div>
-              )}
+              <div className="h-full flex justify-center items-center">
+                {imageLoading && (
+                  <div className="item-center">
+                    <Spinner />
+                    <p>Memuat Data Foto...</p>
+                  </div>
+                )}
 
-              {imageLoading && (
-                <div className="item-center">
-                  <Spinner />
-                </div>
-              )}
+                {!imageLoading && imageCarouselData && (
+                  <div>
+                    <HomeCarousel
+                      imageCarouselData={imageCarouselData}
+                      withFrame={withFrame}
+                      setWithFrame={setWithFrame}
+                    />
+                  </div>
+                )}
 
-              {imageCarouselData.length === 0 && <p>Belum Ada Data Foto</p>}
+                {!imageLoading && imageCarouselData.length === 0 && (
+                  <p>Belum Ada Data Foto</p>
+                )}
+              </div>
             </Card>
           </div>
         </div>
