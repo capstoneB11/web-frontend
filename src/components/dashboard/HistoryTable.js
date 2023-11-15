@@ -18,7 +18,11 @@ const HistoryTable = ({ selectedDate, chickenCount }) => {
   });
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      className="mb-4"
+      component={Paper}
+      style={{ maxHeight: 300, overflowY: "auto" }}
+    >
       <Table aria-label="chicken count history">
         <TableHead>
           <TableRow>

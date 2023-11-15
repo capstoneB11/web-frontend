@@ -17,6 +17,7 @@ export function useChickenCount(userToken) {
           const dataObjects = responseData.data.map((item) => ({
             timestamp: item.timestamp,
             count: item.count,
+            part: item.part,
           }));
 
           setChickenCount(dataObjects);
