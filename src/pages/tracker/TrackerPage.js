@@ -22,9 +22,7 @@ import HistoryTable from "../../components/dashboard/HistoryTable";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const TrackerPage = () => {
-  const userToken = useUserToken();
-
+const TrackerPage = ({ userToken }) => {
   const { chickenCount, countLoading } = useChickenCount(userToken);
 
   let content;
