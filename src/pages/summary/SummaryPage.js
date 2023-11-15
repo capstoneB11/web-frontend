@@ -18,21 +18,31 @@ const SummaryPage = ({ userToken }) => {
 
   const { chickenCount, countLoading } = useChickenCount(userToken);
 
-  console.log(`MEMEK GAMING ${chickenCount}`);
+  // Function to get unique count for each part
+  const getUniqueCountByPart = (part) => {
+    const entry = chickenCount.find((entry) => entry.part === part);
+    return entry ? entry.count : 0;
+  };
 
-  // Get the latest count and the count at the first timestamp
-  const latestCount = chickenCount[chickenCount.length - 1]?.count || 0; // Latest count value\
-  const firstCount = chickenCount[0]?.count || 0; // Count value at the first timestamp
+  // Get unique counts for each part
+  const uniqueCountPart01 = getUniqueCountByPart("01");
+  const uniqueCountPart02 = getUniqueCountByPart("02");
+  const uniqueCountPart03 = getUniqueCountByPart("03");
+  const uniqueCountPart04 = getUniqueCountByPart("04");
 
-  // Calculating the difference in counts
-  //const deadChickenCount = firstCount - latestCount;
+  // Sum the unique counts
+  const totalSum =
+    uniqueCountPart01 +
+    uniqueCountPart02 +
+    uniqueCountPart03 +
+    uniqueCountPart04;
 
   //Required Fodder
-  const requiredFodder = latestCount * 0.08;
+  const requiredFodder = totalSum * 0.08;
   const requiredCost = requiredFodder * 9800;
 
   const generateRandomNumber = () => {
-    handleChickenCountChange(chickenCount.toString());
+    handleChickenCountChange(totalSum.toString());
   };
 
   // Functions to handle input changes

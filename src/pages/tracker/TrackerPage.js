@@ -104,11 +104,21 @@ const TrackerPage = ({ userToken }) => {
             <h2 className="text-md sm:text-2xl font-bold font-bold mb-2 sm:mt-4">
               Grafik Jumlah Ayam
             </h2>
-            <Bar
-              className="px-4 lg:p-20"
-              data={barChartData}
-              options={barChartOptions}
-            />
+            {barChartData.labels.length === 0 ||
+            barChartData.datasets[0].data.length === 0 ? (
+              <div>
+                <p>
+                  Tidak ada perhitungan pada hari yang dipilih. Coba Pilih hari
+                  lain 😀
+                </p>
+              </div>
+            ) : (
+              <Bar
+                className="px-4 lg:p-20"
+                data={barChartData}
+                options={barChartOptions}
+              />
+            )}
           </Card>
         </div>
 
@@ -126,14 +136,26 @@ const TrackerPage = ({ userToken }) => {
             </Card>
           </div>
           <div className="w-full lg:w-1/2">
-            <Card className="p-4 flex flex-col items-center justify-center h-full">
-              <h2 className="text-xl sm:text-2xl font-bold mb-2">
+            <Card className="p-4 h-full">
+              <h2 className="text-xl text-center sm:text-2xl font-bold mb-2">
                 Tabel Riwayat Prediksi
               </h2>
-              <HistoryTable
-                selectedDate={selectedDate}
-                chickenCount={chickenCount}
-              />
+              <div className="flex flex-col items-center justify-center h-full">
+                {barChartData.labels.length === 0 ||
+                barChartData.datasets[0].data.length === 0 ? (
+                  <div>
+                    <p>
+                      Tidak ada perhitungan pada hari yang dipilih. Coba Pilih
+                      hari lain 😀
+                    </p>
+                  </div>
+                ) : (
+                  <HistoryTable
+                    selectedDate={selectedDate}
+                    chickenCount={chickenCount}
+                  />
+                )}
+              </div>
             </Card>
           </div>
         </div>
