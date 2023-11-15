@@ -24,8 +24,8 @@ const StatisticPage = () => {
           navigate("/login");
         }}
       />
-      <TrackerPage />
-      <SummaryPage />
+      <TrackerPage userToken={userToken} />
+      <SummaryPage userToken={userToken} />
     </div>
   );
 };
