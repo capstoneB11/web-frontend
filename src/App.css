@@ -54,6 +54,14 @@
   margin: 20px auto;
 }
 
+.past-date {
+  color: #888;
+}
+
+.future-date {
+  color: #ccc;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

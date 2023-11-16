@@ -14,7 +14,6 @@ import id from "date-fns/locale/id"; // Import the Indonesian locale
 import { Bar } from "react-chartjs-2";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import useUserToken from "../../hooks/useUserToken";
 import Card from "../../components/dashboard/Card";
 import Loader from "../../utils/Loader";
 import { useChickenCount } from "../../hooks/useChickenCount";
@@ -85,6 +84,16 @@ const TrackerPage = ({ userToken }) => {
     });
   };
 
+  const tileDisabled = ({ date }) => {
+    // Disable dates that are after today
+    return date > new Date();
+  };
+
+  const tileClassName = ({ date }) => {
+    // Add custom styling to the tiles
+    return date <= new Date() ? "past-date" : "future-date";
+  };
+
   if (countLoading) {
     content = (
       <div className="flex h-screen items-center justify-center">
@@ -128,7 +137,12 @@ const TrackerPage = ({ userToken }) => {
               <h2 className="text-md sm:text-2xl font-bold mb-2">
                 Pilih Riwayat Prediksi
               </h2>
-              <Calendar value={selectedDate} onChange={handleDateChange} />
+              <Calendar
+                value={selectedDate}
+                onChange={handleDateChange}
+                tileDisabled={tileDisabled}
+                tileClassName={tileClassName}
+              />
               <p>
                 Tanggal terpilih sejak:{" "}
                 {format(selectedDate, "dd MMMM yyyy", { locale: id })}
@@ -138,7 +152,7 @@ const TrackerPage = ({ userToken }) => {
           <div className="w-full lg:w-1/2">
             <Card className="p-4 h-full">
               <h2 className="text-xl text-center sm:text-2xl font-bold mb-2">
-                Tabel Riwayat Prediksi
+                Tabel Riwayat Prediksi Harian
               </h2>
               <div className="flex flex-col items-center justify-center h-full">
                 {barChartData.labels.length === 0 ||

@@ -1,11 +1,17 @@
 import React, { lazy, Suspense } from "react";
 import WelcomeImage from "../../assets/welcome-image.webp";
 import Spinner from "../../utils/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-scroll";
 const LazyImage = lazy(() => import("../../utils/LazyImage"));
 
 const PublicBanner = ({ topSectionHeight }) => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/trial");
+  };
+
   return (
     <div
       style={{ height: topSectionHeight }}
@@ -26,8 +32,9 @@ const PublicBanner = ({ topSectionHeight }) => {
       <button
         type="button"
         className="drop-shadow-2xl bg-gradient-to-b from-gradient-1 to-gradient-2 text-white hover:scale-110 scale-75 sm:scale-100 transition-transform duration-300 absolute mt-40 text-center text-xl font-medium font-outline px-8 py-4 rounded-2xl"
+        onClick={handleButtonClick}
       >
-        <Link to="/trial">See the magic with AI</Link>
+        See the magic with AI
       </button>
     </div>
   );

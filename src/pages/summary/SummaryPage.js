@@ -41,6 +41,12 @@ const SummaryPage = ({ userToken }) => {
   const requiredFodder = totalSum * 0.08;
   const requiredCost = requiredFodder * 9800;
 
+  const formattedCost = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 2,
+  }).format(requiredCost);
+
   const generateRandomNumber = () => {
     handleChickenCountChange(totalSum.toString());
   };
@@ -111,7 +117,7 @@ const SummaryPage = ({ userToken }) => {
                 />
                 <div className="flex flex-col items-center">
                   <p className="text-2xl font-bold text-orange-4">
-                    Rp {requiredCost}
+                    {formattedCost}
                   </p>
                   <p>Harga Pakan</p>
                 </div>
