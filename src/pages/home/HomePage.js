@@ -26,7 +26,7 @@ const HomePage = () => {
 
   const [withFrame, setWithFrame] = useState(false);
 
-  const { userToken, showAlert } = useUserToken();
+  const { userToken, username, showAlert } = useUserToken();
 
   const { imageCarouselData, imageLoading } = useImageCarousel(
     userToken,
@@ -89,7 +89,7 @@ const HomePage = () => {
     content = (
       <div className="p-6 sm:px-10 sm:py-4">
         <h1 className="text-2xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
-          Hello, Peternak Yazid! 🧑🏻‍🌾
+          Hello, {username}! 🧑🏻‍🌾
         </h1>
         <p className="text-xs sm:text-sm text-white italic text-start">
           {today}, {weatherData.location.name}, {weatherData.location.region}

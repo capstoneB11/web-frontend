@@ -21,7 +21,7 @@ import HistoryTable from "../../components/dashboard/HistoryTable";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const TrackerPage = ({ userToken }) => {
+const TrackerPage = ({ userToken, username }) => {
   const { chickenCount, countLoading } = useChickenCount(userToken);
 
   let content;
@@ -104,7 +104,7 @@ const TrackerPage = ({ userToken }) => {
     content = (
       <div className="p-6 sm:p-10">
         <h1 className="text-2xl sm:text-4xl font-medium text-white mt-6 mb-4 ">
-          Hello, Peternak Yazid! 🧑🏻‍🌾
+          Hello, {username}! 🧑🏻‍🌾
         </h1>
         <h1 className="text-white text-3xl sm:text-4xl font-bold">Statistik</h1>
 

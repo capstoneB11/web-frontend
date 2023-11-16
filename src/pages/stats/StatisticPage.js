@@ -8,7 +8,7 @@ import CustomModal from "../../components/CustomModal";
 import { useNavigate } from "react-router-dom";
 
 const StatisticPage = () => {
-  const { userToken, showAlert } = useUserToken();
+  const { userToken, username, showAlert } = useUserToken();
   const navigate = useNavigate();
 
   return (
@@ -24,7 +24,7 @@ const StatisticPage = () => {
           navigate("/login");
         }}
       />
-      <TrackerPage userToken={userToken} />
+      <TrackerPage username={username} userToken={userToken} />
       <SummaryPage userToken={userToken} />
     </div>
   );

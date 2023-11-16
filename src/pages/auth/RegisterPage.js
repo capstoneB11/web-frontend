@@ -29,7 +29,13 @@ const RegisterPage = () => {
 
   const handleDoNothing = () => {};
 
-  const handleRegisterSubmit = async (e, email, password, passwordConfirm) => {
+  const handleRegisterSubmit = async (
+    e,
+    email,
+    password,
+    username,
+    passwordConfirm
+  ) => {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
@@ -64,6 +70,8 @@ const RegisterPage = () => {
           break;
       }
     } else {
+      // Store the token in local storage
+      localStorage.setItem("username", username);
       console.log(result);
       setModalContent({
         acceptText: "Registrasi Berhasil!",

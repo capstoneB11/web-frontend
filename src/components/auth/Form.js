@@ -10,6 +10,7 @@ const Form = ({
   isLogin,
   onSubmit,
 }) => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState("");
@@ -62,8 +63,28 @@ const Form = ({
           {isLogin ? "Masukkan Informasi Anda" : "Masukkan Informasi Anda"}
         </p>
 
-        <form onSubmit={(e) => onSubmit(e, email, password, passwordConfirm)}>
-          <div className="mb-4">
+        <form
+          onSubmit={(e) =>
+            onSubmit(e, email, password, username, passwordConfirm)
+          }
+        >
+          {!isLogin && (
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-gray-600">
+                Username
+              </label>
+              <input
+                required
+                type="Username"
+                id="Username"
+                name="Username"
+                placeholder="Namaku"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-orange-500"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+          )}
+          <div className="mb-6">
             <label htmlFor="email" className="block text-gray-600">
               Email
             </label>
