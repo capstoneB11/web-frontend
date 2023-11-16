@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faCoins } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faCoins,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import SummaryInputField from "../../components/dashboard/SummaryInputField";
 import useUserToken from "../../hooks/useUserToken";
 import Card from "../../components/dashboard/Card";
 import { useChickenCount } from "../../hooks/useChickenCount";
 import Spinner from "../../utils/Spinner";
+import Tooltip from "../../utils/Tooltip";
 
 const SummaryPage = ({ userToken }) => {
   let content;
@@ -74,8 +79,15 @@ const SummaryPage = ({ userToken }) => {
     // Perform calculations or other actions using the state variables: price, weight, productionCost, chickenCount
 
     const totalResult =
-      +price + +weight + +productionCost + +chickenCountFromText;
-    setResult(totalResult);
+      +price * +weight * +chickenCountFromText - +productionCost;
+
+    const formattedResult = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 2,
+    }).format(totalResult);
+
+    setResult(formattedResult);
   };
 
   if (countLoading) {
@@ -179,7 +191,7 @@ const SummaryPage = ({ userToken }) => {
                     type="button"
                     onClick={generateRandomNumber}
                   >
-                    Gunakan Hasil Prediksi
+                    Gunakan Hasil Prediksi Terbaru
                   </button>
                 </div>
 
@@ -191,7 +203,19 @@ const SummaryPage = ({ userToken }) => {
                 </button>
               </form>
 
-              <h1>Total : {result}</h1>
+              <div className="flex flex-row items-center justify-center">
+                <div className="flex flex-col items-center mt-4 mx-4">
+                  <p className="text-black">Estimasi Hasil Panen</p>
+                  <p className="text-2xl font-bold text-orange-4">{result}</p>
+                </div>
+                <Tooltip text="(Harga Ayam x Rata-Rata Bobot x Jumlah ayam) - Biaya Produksi">
+                  <FontAwesomeIcon
+                    className="mr-4"
+                    icon={faInfoCircle}
+                    color="black"
+                  />
+                </Tooltip>
+              </div>
             </Card>
           </div>
         </div>
