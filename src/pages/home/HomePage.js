@@ -131,9 +131,9 @@ const HomePage = () => {
                   </div>
                 )}
 
-                {!imageLoading && imageCarouselData.length === 0 && (
+                {/* {!imageLoading && imageCarouselData.length === 0 && (
                   <p>Belum Ada Data Foto</p>
-                )}
+                )} */}
               </div>
             </Card>
           </div>
